@@ -11,7 +11,7 @@ interface PostCardProps {
 
 export const PostCard = ({ image, title, description, category, date, price }: PostCardProps) => {
   return (
-    <article className="group cursor-pointer overflow-hidden rounded-3xl bg-cream-50 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
+    <article className="group cursor-pointer overflow-hidden rounded-3xl bg-cream-50 card-shadow hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
       <div className="relative h-56 overflow-hidden">
         <img
           src={image}

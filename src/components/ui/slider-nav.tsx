@@ -12,7 +12,7 @@ interface SliderNavProps {
 
 export const SliderNav = ({ className, swiperInstance }: SliderNavProps) => {
   return (
-    <div className={cn('flex gap-3', className)}>
+    <div className={cn('flex gap-4', className)}>
       <button
         onClick={() => swiperInstance.slidePrev()}
         className="cursor-pointer flex h-10 w-10 items-center justify-center rounded-full border border-charcoal-400 text-charcoal-600 transition-colors hover:border-gold-500 hover:text-gold-600 disabled:opacity-30 disabled:pointer-events-none"

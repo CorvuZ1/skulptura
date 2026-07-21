@@ -36,21 +36,22 @@ export const SearchFilters = ({ tags, className }: ISearchFiltersProps) => {
         inputRef={inputRef}
         defaultValue={searchParams.get('search') || ''}
         onChange={({ target }) => onSearchChange(target.value)}
-        className="mb-3"
+        className="mb-4"
       />
 
-      <div className="flex">
+      <div className="flex flex-wrap gap-3 items-start justify-between">
         <Tags items={tags} />
-        <Button
-          href="/services"
-          replace
-          className="ml-auto"
-          onClick={() => {
-            inputRef.current && (inputRef.current.value = '')
-          }}
-        >
-          Очистить
-        </Button>
+        {searchParams.size > 0 && (
+          <Button
+            href="/services"
+            replace
+            onClick={() => {
+              inputRef.current && (inputRef.current.value = '')
+            }}
+          >
+            Очистить
+          </Button>
+        )}
       </div>
     </div>
   )

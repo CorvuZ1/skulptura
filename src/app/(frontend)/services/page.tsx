@@ -4,6 +4,8 @@ import { publications } from '@/mock/publications'
 import { PublicationCard } from '@/components/ui/publication-card'
 import { Container } from '@/components/ui/container'
 import { SearchFilters } from '@/components/ui/filters'
+import { Section } from '@/components/ui/section'
+import { SliderNav } from '@/components/ui/slider-nav'
 
 export default function ServicesPage() {
   return (
@@ -14,22 +16,22 @@ export default function ServicesPage() {
         description="Полный спектр косметологических услуг — от инъекционных и аппаратных процедур до уходовых программ и ухода за телом."
       />
 
-      <section className="py-24 bg-white gradient-cream-to-b">
+      <Section title={<h2>Ваша формула красоты</h2>}>
         <Container>
           <SearchFilters tags={['TestTag13', 'TestTag32', 'TestTag64']} className="mb-6" />
 
           <div className="grid grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-8">
-            {publications.map((pub) => (
+            {publications.map((publication) => (
               <PublicationCard
-                key={pub.id}
-                description={pub.description}
-                services={pub.services}
-                title={pub.title}
+                key={publication.id}
+                description={publication.description}
+                services={publication.services}
+                title={publication.title}
               />
             ))}
           </div>
         </Container>
-      </section>
+      </Section>
 
       <CTA />
     </div>

@@ -32,7 +32,7 @@ export function Header() {
       ref={headerRef}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent',
-        (isScrolled || isMobileOpen) && 'bg-cream-50  shadow-lg',
+        (isScrolled || isMobileOpen) && 'bg-cream-50  card-shadow',
       )}
     >
       <Container className="relative z-49">
@@ -80,7 +80,7 @@ export function Header() {
           <button
             onClick={() => setIsMobileOpen((prev) => !prev)}
             className={cn(
-              'hidden md:flex h-15 w-15 items-center justify-center rounded-full transition-colors text-white hover:bg-white/10',
+              'hidden md:flex h-14 w-14 items-center justify-center rounded-full transition-colors text-white hover:bg-white/10',
               (isScrolled || isMobileOpen) && 'text-charcoal-800 hover:bg-cream-100',
             )}
             aria-label="Меню"

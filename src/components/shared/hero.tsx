@@ -48,7 +48,7 @@ export const Hero = ({
             {title}
           </div>
           {description && (
-            <p className="text-lg leading-relaxed text-cream-100/80">{description}</p>
+            <p className="text-lg max-w-140 leading-relaxed text-cream-100/80">{description}</p>
           )}
         </div>
       </Container>
