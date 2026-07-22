@@ -12,9 +12,11 @@ export interface ISearchProps {
   className?: string
 }
 
-export const Search = ({ onChange, defaultValue, inputRef, className }: ISearchProps) => {
+export const Search = (props: ISearchProps) => {
+  const { className, defaultValue, inputRef, onChange } = props
+
   return (
-    <Form data-component="search" action="" className={cn('relative', className)}>
+    <Form action="" className={cn('relative', className)}>
       <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
 
       <input

@@ -2,7 +2,7 @@ import './styles.css'
 import localFont from 'next/font/local'
 import { cn } from '@/lib/utils'
 import { Header } from '@/components/layouts/header'
-import Footer from '@/components/layouts/footer'
+import { Footer } from '@/components/layouts/footer'
 
 const raleway = localFont({
   src: [
@@ -25,10 +25,10 @@ const raleway = localFont({
   variable: '--font-primary',
 })
 
-const cormorantGaramond = localFont({
+const playfairDisplay = localFont({
   src: [
     {
-      path: '../../../public/fonts/cormorant-garamond/CormorantGaramond-SemiBold.woff2',
+      path: '../../../public/fonts/playfair-display/PlayfairDisplay-SemiBold.woff2',
       weight: '600',
       style: 'normal',
     },
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body
         className={cn(
-          cormorantGaramond.variable,
+          playfairDisplay.variable,
           raleway.variable,
           'min-h-screen flex flex-col font-primary',
         )}

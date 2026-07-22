@@ -3,14 +3,15 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/container'
 import { Icon } from '@/components/ui/icon'
 import { Button } from '../ui/button'
+import { ROUTES } from '@/lib/routes'
 
-export default function Footer() {
+export const Footer = () => {
   return (
     <footer className="bg-charcoal-900 text-white pt-20 pb-10 sm:pt-14 font-medium">
       <Container>
         <div className="grid grid-cols-4 md:grid-cols-1 gap-x-12 gap-y-8 mb-8">
           <div className="col-span-2 md:col-span-1">
-            <h3 className="text-3xl mb-4 text-gold-400">Lumière</h3>
+            <h3 className="text-3xl mb-4 text-gold-400">Скульптура</h3>
             <p className="text-charcoal-400 max-w-md text-sm">
               Косметологическая студия премиум-класса. Объединяем эстетику, доказательную медицину и
               индивидуальный подход к каждому гостю.
@@ -21,17 +22,17 @@ export default function Footer() {
             <h4 className="font-semibold tracking-wider uppercase text-gold-400 mb-5">Навигация</h4>
             <ul className="space-y-3 text-charcoal-400">
               <li>
-                <Link href="/" className="hover:text-gold-400 transition-colors">
+                <Link href={ROUTES.home.href} className="hover:text-gold-400 transition-colors">
                   Главная
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-gold-400 transition-colors">
+                <Link href={ROUTES.services.href} className="hover:text-gold-400 transition-colors">
                   Процедуры и товары
                 </Link>
               </li>
               <li>
-                <Link href="/contacts" className="hover:text-gold-400 transition-colors">
+                <Link href={ROUTES.contacts.href} className="hover:text-gold-400 transition-colors">
                   Контакты
                 </Link>
               </li>
@@ -94,9 +95,13 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-charcoal-800 pt-8 flex flex-row md:flex-col justify-between items-center gap-x-8 gap-y-4 text-sm text-charcoal-400 md:items-start">
-          <p>© 2026 Lumière. Все права защищены.</p>
+          <p>Все права защищены.</p>
           <p>Лицензия на медицинскую деятельность № ЛО-77-01-019823</p>
-          <a href="https://icher.pro" target="_blank" className="animate-color-flow">
+          <a
+            href="https://icher.pro"
+            target="_blank"
+            className="animate-background-shimmer bg-[linear-gradient(90deg,#7953cd,#00affa,#0190cd,#764ada,#7953cd)] bg-size-[500%_auto] bg-clip-text text-transparent"
+          >
             Разработчик
           </a>
         </div>

@@ -2,7 +2,7 @@ import { specialists } from '../../mock/specialists'
 
 import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
-import { Hero } from '@/components/shared/hero'
+import { Hero } from '@/components/sections/hero'
 import { Button } from '@/components/ui/button'
 import { SpecialistCard } from '@/components/ui/specialist-card'
 import { PublicationCard } from '@/components/ui/publication-card'
@@ -12,6 +12,11 @@ import { BeforeAfterSlider } from '@/components/ui/before-after-slider'
 import { Container } from '@/components/ui/container'
 import { CTA } from '@/components/sections/cta'
 import 'swiper/css'
+import { BeforeAfter } from '@/components/sections/before-after'
+import { Equipment } from '@/components/sections/equipment'
+import { ServicesPreview } from '@/components/sections/services-preview'
+import { Stats } from '@/components/sections/stats'
+import { Specialists } from '@/components/sections/specialists'
 
 export default function Home() {
   return (
@@ -22,88 +27,24 @@ export default function Home() {
         showArrow
         image="https://static.tildacdn.com/tild6637-3536-4366-b865-376135383739/3.png"
         title={
-          <div>
+          <div className="animate-background-shimmer pb-2 bg-[linear-gradient(90deg,#d49a2e,#f4e3b8,#d49a2e)] bg-size-[500%_auto] bg-clip-text text-transparent">
             Красота, в которой
             <br />
-            <span className="shimmer-text">сияет здоровье</span>
+            сияет здоровье
           </div>
         }
         description="Студия косметологии с медицинским подходом. Инъекционные и аппаратные процедуры, индивидуальный уход и внимание к каждой детали вашего совершенства."
       />
 
-      <EquipmentSlider />
+      <Equipment />
 
-      {/* ── Publications ── */}
-      <section className="py-24 bg-white gradient-cream-to-b">
-        <Container>
-          <div className="mb-16 flex flex-row items-end justify-between gap-6 sm:flex-col sm:items-start">
-            <h2 className="text-6xl font-light leading-tight text-charcoal-800 lg:text-5xl sm:text-4xl">
-              Процедуры и товары
-            </h2>
-            {publications.length > 3 && (
-              <Button variant="ghost" className="group" href="/services">
-                Смотреть все
-                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </Button>
-            )}
-          </div>
-          <div className="grid grid-cols-3 lg:grid-cols-2 sm:grid-cols-1 gap-8">
-            {publications.slice(0, 3).map((pub) => (
-              <PublicationCard
-                key={pub.id}
-                description={pub.description}
-                services={pub.services}
-                title={pub.title}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
+      <ServicesPreview />
 
-      {/* ── Stats ── */}
-      <section className="relative overflow-hidden bg-charcoal-800 py-20">
-        <Container className="relative">
-          <div className="grid grid-cols-4 lg:grid-cols-2 sm:grid-cols-1 gap-8 text-center">
-            {[
-              { value: '15', label: 'лет на рынке' },
-              { value: '12000+', label: 'довольных клиентов' },
-              { value: '50+', label: 'видов процедур' },
-              { value: '4.9', label: 'средняя оценка' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div className="mb-2 text-6xl font-light text-gold-400 lg:text-5xl">0</div>
-                <div className="text-sm uppercase tracking-wider text-cream-100/60">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <Stats />
 
-      <BeforeAfterSlider />
+      <BeforeAfter />
 
-      {/* ── Specialists preview ── */}
-      <section className="py-24 gradient-cream-to-b">
-        <Container>
-          <h2 className="text-6xl lg:text-5xl sm:text-4xl mb-16 font-light leading-tight text-charcoal-800">
-            Специалисты
-          </h2>
-          <div className="flex flex-col gap-16">
-            {specialists.map((spec, idx) => (
-              <SpecialistCard
-                key={spec.id}
-                experience={spec.experience}
-                image={spec.image}
-                name={spec.name}
-                role={spec.role}
-                specializations={spec.specializations}
-                isReversed={idx % 2 === 1}
-              />
-            ))}
-          </div>
-        </Container>
-      </section>
+      <Specialists />
 
       <CTA />
     </div>

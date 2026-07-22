@@ -1,15 +1,15 @@
-interface ServiceItem {
-  name: string
-  price: string
-}
-
-interface PublicationCardProps {
+export interface IPublicationCardProps {
   title: string
   description: string
-  services: ServiceItem[]
+  services: {
+    name: string
+    price: string
+  }[]
 }
 
-export const PublicationCard = ({ description, services, title }: PublicationCardProps) => {
+export const PublicationCard = (props: IPublicationCardProps) => {
+  const { description, services, title } = props
+
   return (
     <article className="rounded-3xl bg-white p-6 transition-all duration-300 card-shadow">
       <h3 className="font-secondary mb-1 text-2xl text-charcoal-800">{title}</h3>

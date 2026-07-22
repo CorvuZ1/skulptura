@@ -3,11 +3,11 @@
 import { cn } from '@/lib/utils'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
-interface TagProps {
+interface ITagsProps {
   items: string[]
 }
 
-export const Tags = ({ items }: TagProps) => {
+export const Tags = ({ items }: ITagsProps) => {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -27,7 +27,7 @@ export const Tags = ({ items }: TagProps) => {
 
     newTags.forEach((t) => params.append('tags', t))
 
-    router.replace(`${pathname}?${params.toString()}`)
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
   }
 
   return (

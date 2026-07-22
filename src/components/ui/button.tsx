@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import Link, { LinkProps } from 'next/link'
-import { forwardRef, ReactNode, type ButtonHTMLAttributes } from 'react'
+import { ReactNode, type ButtonHTMLAttributes } from 'react'
 
 interface IBaseButtonProps {
   variant?: 'primary' | 'ghost' | 'outline'
@@ -39,14 +39,14 @@ export const Button = (props: ButtonPropsType) => {
 
   if (href) {
     return (
-      <Link {...linkRest} href={href} className={classes} data-component="button">
+      <Link {...linkRest} href={href} className={classes}>
         {children}
       </Link>
     )
   }
 
   return (
-    <button {...buttonRest} data-component="button" className={classes}>
+    <button {...buttonRest} className={classes}>
       {children}
     </button>
   )

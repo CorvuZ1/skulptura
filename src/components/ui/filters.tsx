@@ -9,13 +9,16 @@ import { Button } from './button'
 import { cn } from '@/lib/utils'
 import { Search } from './search'
 import { Tags } from './tags'
+import { ROUTES } from '@/lib/routes'
 
 export interface ISearchFiltersProps {
   tags: string[]
   className?: string
 }
 
-export const SearchFilters = ({ tags, className }: ISearchFiltersProps) => {
+export const SearchFilters = (props: ISearchFiltersProps) => {
+  const { tags, className } = props
+
   const router = useRouter()
   const searchParams = useSearchParams()
   const pathname = usePathname()
@@ -25,7 +28,7 @@ export const SearchFilters = ({ tags, className }: ISearchFiltersProps) => {
     debounce((search: string) => {
       const params = new URLSearchParams(searchParams.toString())
       params.set('search', search)
-      router.replace(`${pathname}?${params.toString()}`)
+      router.replace(`${pathname}?${params.toString()}`, { scroll: false })
     }, 400),
     [searchParams],
   )
@@ -43,7 +46,8 @@ export const SearchFilters = ({ tags, className }: ISearchFiltersProps) => {
         <Tags items={tags} />
         {searchParams.size > 0 && (
           <Button
-            href="/services"
+            href={ROUTES.services.href}
+            scroll={false}
             replace
             onClick={() => {
               inputRef.current && (inputRef.current.value = '')
