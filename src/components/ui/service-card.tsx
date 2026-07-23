@@ -1,4 +1,4 @@
-export interface IPublicationCardProps {
+export interface IServiceCardProps {
   title: string
   description: string
   services: {
@@ -7,11 +7,11 @@ export interface IPublicationCardProps {
   }[]
 }
 
-export const PublicationCard = (props: IPublicationCardProps) => {
+export const ServiceCard = (props: IServiceCardProps) => {
   const { description, services, title } = props
 
   return (
-    <article className="rounded-3xl bg-white p-6 transition-all duration-300 card-shadow">
+    <article data-block-reveal className="rounded-3xl bg-white p-6 card-shadow">
       <h3 className="font-secondary mb-1 text-2xl text-charcoal-800">{title}</h3>
       <p className="mb-3 text-sm text-charcoal-600">{description}</p>
       <div className="divide-y divide-charcoal-400/20">

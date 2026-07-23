@@ -36,7 +36,7 @@ export const NumberReveal = (props: INumberRevealProps) => {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: elementRef.current,
-          start: 'top 85%',
+          start: 'top 100%',
           once: true,
         },
         onUpdate: () => {

@@ -91,9 +91,7 @@
   --font-secondary: 'Playfair Display', Georgia, serif;
 
   --breakpoint-*: initial;
-}
 
-@theme {
   --animate-background-shimmer: shimmer 15s linear infinite alternate;
 }
 
@@ -113,3 +111,7 @@
 @custom-variant md (@media (max-width: 768px));
 @custom-variant sm (@media (max-width: 550px));
 @custom-variant xs (@media (max-width: 425px));
+
+[data-block-reveal] {
+  opacity: 0;
+}

@@ -11,7 +11,10 @@ export const EquipmentCard = (props: EquipmentCardProps) => {
   const { image, name, className } = props
 
   return (
-    <div className={cn('group cursor-pointer overflow-hidden rounded-3xl bg-white', className)}>
+    <div
+      data-block-reveal
+      className={cn('group cursor-pointer overflow-hidden rounded-3xl bg-white', className)}
+    >
       <div className="aspect-4/3 overflow-hidden relative">
         <Image
           src={image}

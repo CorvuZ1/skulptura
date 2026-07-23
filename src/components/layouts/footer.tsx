@@ -1,9 +1,11 @@
 import { Phone, MapPin, Mail, Clock } from 'lucide-react'
 import Link from 'next/link'
 import { Container } from '@/components/ui/container'
-import { Icon } from '@/components/ui/icon'
+import { SimpleContactItem } from '@/components/ui/simple-contact-item'
 import { Button } from '../ui/button'
 import { ROUTES } from '@/lib/routes'
+import { SocialLink } from '../ui/social-link'
+import { Icon } from '../ui/icon'
 
 export const Footer = () => {
   return (
@@ -11,7 +13,7 @@ export const Footer = () => {
       <Container>
         <div className="grid grid-cols-4 md:grid-cols-1 gap-x-12 gap-y-8 mb-8">
           <div className="col-span-2 md:col-span-1">
-            <h3 className="text-3xl mb-4 text-gold-400">Скульптура</h3>
+            <p className="text-3xl mb-4 text-gold-400">Скульптура</p>
             <p className="text-charcoal-400 max-w-md text-sm">
               Косметологическая студия премиум-класса. Объединяем эстетику, доказательную медицину и
               индивидуальный подход к каждому гостю.
@@ -44,59 +46,51 @@ export const Footer = () => {
               Контакты
             </h4>
             <ul className="space-y-3 text-charcoal-400 mb-6">
-              <li className="flex items-center gap-3">
-                <MapPin size={18} className="text-gold-500 mt-0.5 shrink-0" />
-                <span>Москва, ул. Тверская, 12</span>
+              <li>
+                <SimpleContactItem icon={<MapPin size={18} className="mt-0.5" />}>
+                  <span>Москва, ул. Тверская, 12</span>
+                </SimpleContactItem>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone size={18} className="text-gold-500 shrink-0" />
-                <a href="tel:+74951234567" className="hover:text-gold-400 transition-colors">
-                  +7 (495) 123-45-67
-                </a>
+              <li>
+                <SimpleContactItem icon={<Phone size={18} />}>
+                  <a href="tel:+74951234567" className="hover:text-gold-400 transition-colors">
+                    +7 (495) 123-45-67
+                  </a>
+                </SimpleContactItem>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail size={18} className="text-gold-500 shrink-0" />
-                <a href="tel:+74951234567" className="hover:text-gold-400 transition-colors">
-                  test123@mail.ru
-                </a>
+              <li>
+                <SimpleContactItem icon={<Mail size={18} />}>
+                  <a href="tel:+74951234567" className="hover:text-gold-400 transition-colors">
+                    test123@mail.ru
+                  </a>
+                </SimpleContactItem>
               </li>
-              <li className="flex items-center gap-3">
-                <Clock size={18} className="text-gold-500 shrink-0" />
-                <span>09:00-21:00</span>
+              <li>
+                <SimpleContactItem icon={<Clock size={18} />}>
+                  <span>09:00-21:00</span>
+                </SimpleContactItem>
               </li>
             </ul>
-            <div className="flex gap-5">
-              <a
-                href="/"
-                className="flex h-6 w-6 items-center justify-center rounded-full text-charcoal-400 hover:text-gold-400 transition-colors"
-              >
-                <Icon type="social" name="instagram" />
-              </a>
-              <a
-                href="/"
-                className="flex h-6 w-6 items-center justify-center rounded-full text-charcoal-400 hover:text-gold-400 transition-colors"
-              >
-                <Icon type="social" name="telegram" />
-              </a>
-              <a
-                href="/"
-                className="flex h-6 w-6 items-center justify-center rounded-full text-charcoal-400 hover:text-gold-400 transition-colors"
-              >
-                <Icon type="social" name="whats-app" />
-              </a>
-              <a
-                href="/"
-                className="flex h-6 w-6 items-center justify-center rounded-full text-charcoal-400 hover:text-gold-400 transition-colors"
-              >
-                <Icon type="social" name="max" />
-              </a>
-            </div>
+
+            <ul className="flex gap-5">
+              <li>
+                <SocialLink href="/" icon={<Icon type="social" name="instagram" />} />
+              </li>
+              <li>
+                <SocialLink href="/" icon={<Icon type="social" name="whats-app" />} />
+              </li>
+              <li>
+                <SocialLink href="/" icon={<Icon type="social" name="telegram" />} />
+              </li>
+              <li>
+                <SocialLink href="/" icon={<Icon type="social" name="max" />} />
+              </li>
+            </ul>
           </div>
         </div>
 
         <div className="border-t border-charcoal-800 pt-8 flex flex-row md:flex-col justify-between items-center gap-x-8 gap-y-4 text-sm text-charcoal-400 md:items-start">
           <p>Все права защищены.</p>
-          <p>Лицензия на медицинскую деятельность № ЛО-77-01-019823</p>
           <a
             href="https://icher.pro"
             target="_blank"

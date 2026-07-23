@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 import type { Specialist } from '@/mock/specialists'
+import Image from 'next/image'
 
 export interface ISpecialistCardProps {
   name: string
@@ -14,13 +15,18 @@ export const SpecialistCard = (props: ISpecialistCardProps) => {
   const { experience, image, name, role, specializations, isReversed } = props
 
   return (
-    <div className="flex sm:flex-col items-center gap-10 sm:gap-7 rounded-3xl sm:items-start">
+    <div
+      data-block-reveal
+      className="flex sm:flex-col items-center gap-10 sm:gap-7 rounded-3xl sm:items-start"
+    >
       <div className={cn('w-1/3 sm:w-full shrink-0', isReversed && 'order-2 sm:order-none')}>
         <div className="card-shadow relative aspect-square overflow-hidden rounded-3xl">
-          <img
+          <Image
+            width={600}
+            height={600}
             src={'https://static.tildacdn.com/tild6637-3536-4366-b865-376135383739/3.png'}
             alt={name}
-            className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            className="h-full w-full object-cover transition-transform"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/60 to-transparent" />
         </div>

@@ -1,12 +1,12 @@
 import { Hero } from '@/components/sections/hero'
 import { CTA } from '@/components/sections/cta'
 import { publications } from '@/mock/publications'
-import { PublicationCard } from '@/components/ui/publication-card'
 import { Container } from '@/components/ui/container'
 import { SearchFilters } from '@/components/ui/filters'
 import { Section } from '@/components/ui/section'
 import { SliderNav } from '@/components/ui/slider-nav'
 import { Services } from '@/components/sections/services'
+import { Suspense } from 'react'
 
 export default function ServicesPage() {
   return (
@@ -17,7 +17,9 @@ export default function ServicesPage() {
         description="Полный спектр косметологических услуг — от инъекционных и аппаратных процедур до уходовых программ и ухода за телом."
       />
 
-      <Services />
+      <Suspense>
+        <Services />
+      </Suspense>
 
       <CTA />
     </div>

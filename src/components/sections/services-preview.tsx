@@ -2,9 +2,10 @@ import { publications } from '@/mock/publications'
 import { Container } from '../ui/container'
 import { Button } from '../ui/button'
 import { ArrowRight } from 'lucide-react'
-import { PublicationCard } from '../ui/publication-card'
+import { ServiceCard } from '../ui/service-card'
 import { Section } from '../ui/section'
 import { ROUTES } from '@/lib/routes'
+import { BlockReveal } from '../ui/block-reveal'
 
 export const ServicesPreview = () => {
   return (
@@ -18,19 +19,21 @@ export const ServicesPreview = () => {
           </Button>
         )
       }
-      className="py-24 bg-white gradient-cream-to-b"
+      className="gradient-cream-to-b"
     >
       <Container className="w-full">
-        <div className="grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-6">
-          {publications.slice(0, 3).map((pub) => (
-            <PublicationCard
-              key={pub.id}
-              description={pub.description}
-              services={pub.services}
-              title={pub.title}
-            />
-          ))}
-        </div>
+        <BlockReveal from={{ x: -50 }} to={{ x: 0 }}>
+          <div className="grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-6">
+            {publications.slice(0, 3).map((pub) => (
+              <ServiceCard
+                key={pub.id}
+                description={pub.description}
+                services={pub.services}
+                title={pub.title}
+              />
+            ))}
+          </div>
+        </BlockReveal>
       </Container>
     </Section>
   )
