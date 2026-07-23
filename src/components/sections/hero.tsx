@@ -3,6 +3,7 @@ import { Container } from '@/components/ui/container'
 import { cn } from '@/lib/utils'
 import { ReactNode } from 'react'
 import Image from 'next/image'
+import { TextReveal } from '../ui/text-reveal'
 
 interface IHeroProps {
   title: ReactNode
@@ -38,14 +39,21 @@ export const Hero = (props: IHeroProps) => {
       </div>
 
       <Container className={cn('relative z-10', fullHeight && 'py-20')}>
-        <div className="max-w-2xl">
-          <div className="mb-6 font-semibold text-shadow-current font-secondary text-white text-6xl sm:text-5xl tracking-wide">
-            {title}
+        <TextReveal from={{ y: 50 }} to={{ y: 0 }}>
+          <div className="max-w-2xl">
+            <div
+              className="mb-4 font-semibold text-shadow-current font-secondary text-white text-6xl sm:text-5xl tracking-wide"
+              data-text-reveal
+            >
+              {title}
+            </div>
+            {description && (
+              <p className="text-lg max-w-140 leading-relaxed text-cream-100/80" data-text-reveal>
+                {description}
+              </p>
+            )}
           </div>
-          {description && (
-            <p className="text-lg max-w-140 leading-relaxed text-cream-100/80">{description}</p>
-          )}
-        </div>
+        </TextReveal>
       </Container>
 
       {showArrow && (

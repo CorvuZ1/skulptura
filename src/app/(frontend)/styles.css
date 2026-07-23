@@ -112,6 +112,7 @@
 @custom-variant sm (@media (max-width: 550px));
 @custom-variant xs (@media (max-width: 425px));
 
-[data-block-reveal] {
+[data-block-reveal],
+[data-text-reveal] {
   opacity: 0;
 }

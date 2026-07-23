@@ -13,7 +13,7 @@ export default function ServicesPage() {
     <div>
       <Hero
         image="https://static.tildacdn.com/tild6637-3536-4366-b865-376135383739/3.png"
-        title={<h1>Процедуры и товары</h1>}
+        title={<h1 className="pb-2">Процедуры и товары</h1>}
         description="Полный спектр косметологических услуг — от инъекционных и аппаратных процедур до уходовых программ и ухода за телом."
       />
 

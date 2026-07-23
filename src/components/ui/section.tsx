@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils'
 import { ReactNode } from 'react'
 import { Container } from './container'
+import { TextReveal } from './text-reveal'
 
 export interface ISectionProps {
   children: ReactNode
@@ -20,19 +21,26 @@ export const Section = (props: ISectionProps) => {
     <section className={cn('py-20 md:py-16 sm:py-12 bg-white flex flex-col', className)}>
       {(title || description || right) && (
         <Container className="w-full flex justify-between mb-12 md:mb-10 sm:mb-8 md:flex-col md:items-start gap-8 items-center">
-          <div className="max-w-2xl">
-            {title && (
-              <div
-                className={cn(
-                  'flex font-secondary tracking-wide text-5xl font-light text-charcoal-800 lg:text-5xl sm:text-4xl',
-                  borderClassName,
-                )}
-              >
-                {title}
-              </div>
-            )}
-            {description && <div className="mt-3 text-lg text-charcoal-500">{description}</div>}
-          </div>
+          <TextReveal withMask={false} from={{ x: -50 }} to={{ x: 0 }}>
+            <div className="overflow-hidden max-w-2xl">
+              {title && (
+                <div
+                  data-text-reveal
+                  className={cn(
+                    'pb-2 flex font-secondary tracking-wide text-5xl font-light text-charcoal-800 lg:text-5xl sm:text-4xl',
+                    borderClassName,
+                  )}
+                >
+                  {title}
+                </div>
+              )}
+              {description && (
+                <div data-text-reveal className="mt-3 text-lg text-charcoal-500">
+                  {description}
+                </div>
+              )}
+            </div>
+          </TextReveal>
           {right}
         </Container>
       )}

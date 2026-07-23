@@ -12,7 +12,7 @@ export default function ContactsPage() {
     <div>
       <Hero
         image="https://static.tildacdn.com/tild6637-3536-4366-b865-376135383739/3.png"
-        title={<h1>Свяжитесь с нами</h1>}
+        title={<h1 className="pb-2">Свяжитесь с нами</h1>}
         description="Мы будем рады ответить на ваши вопросы и помочь записаться на удобное время."
       />
 
