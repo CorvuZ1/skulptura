@@ -16,7 +16,7 @@ export const ContactsPage: GlobalConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Информация',
+          label: 'Вступление',
           fields: headPage,
         },
         {

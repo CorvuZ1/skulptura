@@ -69,10 +69,11 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    posts: Post;
-    requests: Request;
     services: Service;
-    faq: Faq;
+    'before-after': BeforeAfter;
+    stats: Stat;
+    equipment: Equipment;
+    specialists: Specialist;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,10 +83,11 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    posts: PostsSelect<false> | PostsSelect<true>;
-    requests: RequestsSelect<false> | RequestsSelect<true>;
     services: ServicesSelect<false> | ServicesSelect<true>;
-    faq: FaqSelect<false> | FaqSelect<true>;
+    'before-after': BeforeAfterSelect<false> | BeforeAfterSelect<true>;
+    stats: StatsSelect<false> | StatsSelect<true>;
+    equipment: EquipmentSelect<false> | EquipmentSelect<true>;
+    specialists: SpecialistsSelect<false> | SpecialistsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -97,15 +99,19 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'home-page': HomePage;
+    'services-page': ServicesPage;
     'contacts-page': ContactsPage;
-    'about-page': AboutPage;
-    general: General;
+    footer: Footer;
+    cta: Cta;
+    contacts: Contact;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
+    'services-page': ServicesPageSelect<false> | ServicesPageSelect<true>;
     'contacts-page': ContactsPageSelect<false> | ContactsPageSelect<true>;
-    'about-page': AboutPageSelect<false> | AboutPageSelect<true>;
-    general: GeneralSelect<false> | GeneralSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+    cta: CtaSelect<false> | CtaSelect<true>;
+    contacts: ContactsSelect<false> | ContactsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -180,73 +186,64 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: string;
-  title: string;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  image?: (string | null) | Media;
-  shortDescription: string;
-  shortDescriptionHtml?: string | null;
-  fullDescription: string;
-  fullDescriptionHtml?: string | null;
-  gallery?: (string | Media)[] | null;
-  tags?: string[] | null;
-  otherPosts?: (string | Post)[] | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "requests".
- */
-export interface Request {
-  id: string;
-  name: string;
-  phone: number;
-  message?: string | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services".
  */
 export interface Service {
   id: string;
   name: string;
-  price: number;
+  description?: string | null;
+  values: {
+    key?: string | null;
+    value?: string | null;
+    id?: string | null;
+  }[];
+  tags: string[];
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "faq".
+ * via the `definition` "before-after".
  */
-export interface Faq {
+export interface BeforeAfter {
   id: string;
-  question: string;
-  answer: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  answerHtml?: string | null;
+  before: string | Media;
+  after: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stats".
+ */
+export interface Stat {
+  id: string;
+  value: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "equipment".
+ */
+export interface Equipment {
+  id: string;
+  name: string;
+  image: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "specialists".
+ */
+export interface Specialist {
+  id: string;
+  experience: string;
+  name: string;
+  specialization: string;
+  tags: string[];
   updatedAt: string;
   createdAt: string;
 }
@@ -283,20 +280,24 @@ export interface PayloadLockedDocument {
         value: string | Media;
       } | null)
     | ({
-        relationTo: 'posts';
-        value: string | Post;
-      } | null)
-    | ({
-        relationTo: 'requests';
-        value: string | Request;
-      } | null)
-    | ({
         relationTo: 'services';
         value: string | Service;
       } | null)
     | ({
-        relationTo: 'faq';
-        value: string | Faq;
+        relationTo: 'before-after';
+        value: string | BeforeAfter;
+      } | null)
+    | ({
+        relationTo: 'stats';
+        value: string | Stat;
+      } | null)
+    | ({
+        relationTo: 'equipment';
+        value: string | Equipment;
+      } | null)
+    | ({
+        relationTo: 'specialists';
+        value: string | Specialist;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -383,52 +384,61 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
- */
-export interface PostsSelect<T extends boolean = true> {
-  title?: T;
-  generateSlug?: T;
-  slug?: T;
-  image?: T;
-  shortDescription?: T;
-  shortDescriptionHtml?: T;
-  fullDescription?: T;
-  fullDescriptionHtml?: T;
-  gallery?: T;
-  tags?: T;
-  otherPosts?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "requests_select".
- */
-export interface RequestsSelect<T extends boolean = true> {
-  name?: T;
-  phone?: T;
-  message?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "services_select".
  */
 export interface ServicesSelect<T extends boolean = true> {
   name?: T;
-  price?: T;
+  description?: T;
+  values?:
+    | T
+    | {
+        key?: T;
+        value?: T;
+        id?: T;
+      };
+  tags?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "faq_select".
+ * via the `definition` "before-after_select".
  */
-export interface FaqSelect<T extends boolean = true> {
-  question?: T;
-  answer?: T;
-  answerHtml?: T;
+export interface BeforeAfterSelect<T extends boolean = true> {
+  before?: T;
+  after?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "stats_select".
+ */
+export interface StatsSelect<T extends boolean = true> {
+  value?: T;
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "equipment_select".
+ */
+export interface EquipmentSelect<T extends boolean = true> {
+  name?: T;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "specialists_select".
+ */
+export interface SpecialistsSelect<T extends boolean = true> {
+  experience?: T;
+  name?: T;
+  specialization?: T;
+  tags?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -479,21 +489,22 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface HomePage {
   id: string;
   headTitle: string;
-  headDescription?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  headDescription?: string | null;
+  headDescriptionHtml?: string | null;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  seoKeywords?: string[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services-page".
+ */
+export interface ServicesPage {
+  id: string;
+  headTitle: string;
+  headDescription?: string | null;
   headDescriptionHtml?: string | null;
   seoTitle?: string | null;
   seoDescription?: string | null;
@@ -508,21 +519,7 @@ export interface HomePage {
 export interface ContactsPage {
   id: string;
   headTitle: string;
-  headDescription?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  headDescription?: string | null;
   headDescriptionHtml?: string | null;
   seoTitle?: string | null;
   seoDescription?: string | null;
@@ -532,40 +529,40 @@ export interface ContactsPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "about-page".
+ * via the `definition` "footer".
  */
-export interface AboutPage {
+export interface Footer {
   id: string;
-  headTitle: string;
-  headDescription?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  headDescriptionHtml?: string | null;
-  seoTitle?: string | null;
-  seoDescription?: string | null;
-  seoKeywords?: string[] | null;
+  description: string;
+  caption: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "general".
+ * via the `definition` "cta".
  */
-export interface General {
+export interface Cta {
   id: string;
-  logo?: (string | null) | Media;
+  title: string;
+  description: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts".
+ */
+export interface Contact {
+  id: string;
+  address?: string | null;
+  phone?: string | null;
+  email?: string | null;
+  hours?: string | null;
+  instagram?: string | null;
+  telegram?: string | null;
+  whatsapp?: string | null;
+  max?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -574,6 +571,21 @@ export interface General {
  * via the `definition` "home-page_select".
  */
 export interface HomePageSelect<T extends boolean = true> {
+  headTitle?: T;
+  headDescription?: T;
+  headDescriptionHtml?: T;
+  seoTitle?: T;
+  seoDescription?: T;
+  seoKeywords?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services-page_select".
+ */
+export interface ServicesPageSelect<T extends boolean = true> {
   headTitle?: T;
   headDescription?: T;
   headDescriptionHtml?: T;
@@ -601,25 +613,39 @@ export interface ContactsPageSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "about-page_select".
+ * via the `definition` "footer_select".
  */
-export interface AboutPageSelect<T extends boolean = true> {
-  headTitle?: T;
-  headDescription?: T;
-  headDescriptionHtml?: T;
-  seoTitle?: T;
-  seoDescription?: T;
-  seoKeywords?: T;
+export interface FooterSelect<T extends boolean = true> {
+  description?: T;
+  caption?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "general_select".
+ * via the `definition` "cta_select".
  */
-export interface GeneralSelect<T extends boolean = true> {
-  logo?: T;
+export interface CtaSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contacts_select".
+ */
+export interface ContactsSelect<T extends boolean = true> {
+  address?: T;
+  phone?: T;
+  email?: T;
+  hours?: T;
+  instagram?: T;
+  telegram?: T;
+  whatsapp?: T;
+  max?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

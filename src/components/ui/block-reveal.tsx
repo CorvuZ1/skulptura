@@ -30,7 +30,7 @@ export const BlockReveal = (props: IBlockRevealProps) => {
       const blocks = q('[data-block-reveal]')
 
       ScrollTrigger.batch(blocks, {
-        start: isVerticalGroup ? 'top center' : 'top 80%',
+        start: isVerticalGroup ? 'top center' : 'top 85%',
         once: true,
         onEnter: (batch) => {
           gsap.fromTo(

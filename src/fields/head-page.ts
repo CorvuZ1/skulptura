@@ -10,7 +10,7 @@ export const headPage: Field[] = [
   },
   {
     name: 'headDescription',
-    type: 'richText',
+    type: 'textarea',
     label: 'Описание',
   },
   lexicalHTMLField({

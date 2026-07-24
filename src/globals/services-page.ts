@@ -2,11 +2,11 @@ import { headPage } from '@/fields/head-page'
 import { seoPage } from '@/fields/seo-page'
 import { GlobalConfig } from 'payload'
 
-export const AboutPage: GlobalConfig = {
-  slug: 'about-page',
+export const ServicesPage: GlobalConfig = {
+  slug: 'services-page',
   label: {
-    singular: 'О нас',
-    plural: 'О нас',
+    singular: 'Процедуры и товары',
+    plural: 'Процедуры и товары',
   },
   admin: {
     group: 'Страницы',
@@ -16,7 +16,7 @@ export const AboutPage: GlobalConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Информация',
+          label: 'Вступление',
           fields: headPage,
         },
         {

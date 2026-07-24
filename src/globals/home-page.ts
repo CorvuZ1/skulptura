@@ -5,8 +5,8 @@ import { GlobalConfig } from 'payload'
 export const HomePage: GlobalConfig = {
   slug: 'home-page',
   label: {
-    singular: 'Домашняя',
-    plural: 'Домашняя',
+    singular: 'Главная',
+    plural: 'Главная',
   },
   admin: {
     group: 'Страницы',
@@ -16,7 +16,7 @@ export const HomePage: GlobalConfig = {
       type: 'tabs',
       tabs: [
         {
-          label: 'Информация',
+          label: 'Вступление',
           fields: headPage,
         },
         {
