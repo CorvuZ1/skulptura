@@ -1,12 +1,9 @@
 'use client'
 
-import { Search as SearchIcon, ArrowDownUp, X } from 'lucide-react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useRef } from 'react'
 import debounce from 'lodash/debounce'
-import Form from 'next/form'
 import { Button } from './button'
-import { cn } from '@/lib/utils'
 import { Search } from './search'
 import { Tags } from './tags'
 import { ROUTES } from '@/lib/routes'
@@ -33,6 +30,24 @@ export const SearchFilters = (props: ISearchFiltersProps) => {
     [searchParams],
   )
 
+  const toggleTag = (tag: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+
+    const currentTags = params.getAll('tags')
+
+    const newTags = currentTags.includes(tag)
+      ? currentTags.filter((t) => t !== tag)
+      : [...currentTags, tag]
+
+    params.delete('tags')
+
+    newTags.forEach((t) => params.append('tags', t))
+
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
+  }
+
+  const selectedTags = searchParams.getAll('tags')
+
   return (
     <div className={className}>
       <Search
@@ -43,7 +58,7 @@ export const SearchFilters = (props: ISearchFiltersProps) => {
       />
 
       <div className="flex flex-wrap gap-3 items-start justify-between">
-        <Tags items={tags} />
+        <Tags toggleTag={toggleTag} selectedTags={selectedTags} items={tags} />
         {searchParams.size > 0 && (
           <Button
             href={ROUTES.services.href}

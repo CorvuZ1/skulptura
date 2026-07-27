@@ -16,7 +16,7 @@ export interface INumberRevealProps {
 }
 
 export const NumberReveal = (props: INumberRevealProps) => {
-  const { children, value, duration = 4 } = props
+  const { children, value, duration = 3 } = props
 
   const elementRef = useRef<HTMLElement>(null)
 
@@ -33,7 +33,6 @@ export const NumberReveal = (props: INumberRevealProps) => {
       gsap.to(counter, {
         value: numericValue,
         duration,
-        ease: 'power2.out',
         scrollTrigger: {
           trigger: elementRef.current,
           start: 'top 100%',
@@ -48,7 +47,6 @@ export const NumberReveal = (props: INumberRevealProps) => {
     },
     {
       scope: elementRef,
-      dependencies: [value, duration],
     },
   )
 

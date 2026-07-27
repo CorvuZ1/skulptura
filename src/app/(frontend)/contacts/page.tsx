@@ -1,22 +1,34 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/sections/hero'
-import { Icon } from '@/components/ui/icon'
-import { Button } from '@/components/ui/button'
-import { Clock, Mail, MapPin, Phone } from 'lucide-react'
-import { Container } from '@/components/ui/container'
-import { Section } from '@/components/ui/section'
 import { Contacts } from '@/components/sections/contacts'
+import { getGlobal } from '@/api/globals'
+import { getImage } from '@/lib/formatters'
+import { Suspense } from 'react'
 
-export default function ContactsPage() {
+export const generateMetadata = async () => {
+  const data = await getGlobal({ slug: 'contacts-page' })
+
+  return {
+    title: data.seoTitle,
+    description: data.seoDescription,
+    keywords: data.seoKeywords,
+  }
+}
+
+export default async function ContactsPage() {
+  const data = await getGlobal({ slug: 'contacts-page' })
+
   return (
     <div>
       <Hero
-        image="https://static.tildacdn.com/tild6637-3536-4366-b865-376135383739/3.png"
-        title={<h1 className="pb-2">Свяжитесь с нами</h1>}
-        description="Мы будем рады ответить на ваши вопросы и помочь записаться на удобное время."
+        image={getImage(data.image)}
+        title={<h1 className="pb-2">{data.title}</h1>}
+        description={data.description || ''}
       />
 
-      <Contacts />
+      <Suspense>
+        <Contacts />
+      </Suspense>
     </div>
   )
 }

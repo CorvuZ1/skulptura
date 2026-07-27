@@ -218,7 +218,7 @@ export interface BeforeAfter {
  */
 export interface Stat {
   id: string;
-  value: number;
+  value: string;
   name: string;
   updatedAt: string;
   createdAt: string;
@@ -240,9 +240,10 @@ export interface Equipment {
  */
 export interface Specialist {
   id: string;
-  experience: string;
+  caption: string;
   name: string;
   specialization: string;
+  image: string | Media;
   tags: string[];
   updatedAt: string;
   createdAt: string;
@@ -435,9 +436,10 @@ export interface EquipmentSelect<T extends boolean = true> {
  * via the `definition` "specialists_select".
  */
 export interface SpecialistsSelect<T extends boolean = true> {
-  experience?: T;
+  caption?: T;
   name?: T;
   specialization?: T;
+  image?: T;
   tags?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -488,9 +490,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface HomePage {
   id: string;
-  headTitle: string;
-  headDescription?: string | null;
-  headDescriptionHtml?: string | null;
+  title: string;
+  description?: string | null;
+  image: string | Media;
   seoTitle?: string | null;
   seoDescription?: string | null;
   seoKeywords?: string[] | null;
@@ -503,9 +505,9 @@ export interface HomePage {
  */
 export interface ServicesPage {
   id: string;
-  headTitle: string;
-  headDescription?: string | null;
-  headDescriptionHtml?: string | null;
+  title: string;
+  description?: string | null;
+  image: string | Media;
   seoTitle?: string | null;
   seoDescription?: string | null;
   seoKeywords?: string[] | null;
@@ -518,9 +520,9 @@ export interface ServicesPage {
  */
 export interface ContactsPage {
   id: string;
-  headTitle: string;
-  headDescription?: string | null;
-  headDescriptionHtml?: string | null;
+  title: string;
+  description?: string | null;
+  image: string | Media;
   seoTitle?: string | null;
   seoDescription?: string | null;
   seoKeywords?: string[] | null;
@@ -571,9 +573,9 @@ export interface Contact {
  * via the `definition` "home-page_select".
  */
 export interface HomePageSelect<T extends boolean = true> {
-  headTitle?: T;
-  headDescription?: T;
-  headDescriptionHtml?: T;
+  title?: T;
+  description?: T;
+  image?: T;
   seoTitle?: T;
   seoDescription?: T;
   seoKeywords?: T;
@@ -586,9 +588,9 @@ export interface HomePageSelect<T extends boolean = true> {
  * via the `definition` "services-page_select".
  */
 export interface ServicesPageSelect<T extends boolean = true> {
-  headTitle?: T;
-  headDescription?: T;
-  headDescriptionHtml?: T;
+  title?: T;
+  description?: T;
+  image?: T;
   seoTitle?: T;
   seoDescription?: T;
   seoKeywords?: T;
@@ -601,9 +603,9 @@ export interface ServicesPageSelect<T extends boolean = true> {
  * via the `definition` "contacts-page_select".
  */
 export interface ContactsPageSelect<T extends boolean = true> {
-  headTitle?: T;
-  headDescription?: T;
-  headDescriptionHtml?: T;
+  title?: T;
+  description?: T;
+  image?: T;
   seoTitle?: T;
   seoDescription?: T;
   seoKeywords?: T;

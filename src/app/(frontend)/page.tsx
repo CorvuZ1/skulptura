@@ -1,5 +1,3 @@
-import { specialists } from '../../mock/specialists'
-
 import type { Metadata } from 'next'
 import { ArrowRight } from 'lucide-react'
 import { Hero } from '@/components/sections/hero'
@@ -16,36 +14,61 @@ import { Equipment } from '@/components/sections/equipment'
 import { ServicesPreview } from '@/components/sections/services-preview'
 import { Stats } from '@/components/sections/stats'
 import { Specialists } from '@/components/sections/specialists'
+import { getImage } from '@/lib/formatters'
+import { getGlobal } from '@/api/globals'
+import { Suspense } from 'react'
 
-export default function Home() {
+export const generateMetadata = async () => {
+  const data = await getGlobal({ slug: 'home-page' })
+
+  return {
+    title: data.seoTitle,
+    description: data.seoDescription,
+    keywords: data.seoKeywords,
+  }
+}
+
+export default async function Home() {
+  const data = await getGlobal({ slug: 'home-page' })
+
   return (
     <div>
       <h1 className="sr-only">Скульптура: студия эстетики лица и тела</h1>
       <Hero
         fullHeight
         showArrow
-        image="https://static.tildacdn.com/tild6637-3536-4366-b865-376135383739/3.png"
+        image={getImage(data.image)}
         title={
           <div className="animate-background-shimmer pb-2 bg-[linear-gradient(90deg,#d49a2e,#f4e3b8,#d49a2e)] bg-size-[500%_auto] bg-clip-text text-transparent">
-            Красота, в которой
-            <br />
-            сияет здоровье
+            {data.title}
           </div>
         }
-        description="Студия косметологии с медицинским подходом. Инъекционные и аппаратные процедуры, индивидуальный уход и внимание к каждой детали вашего совершенства."
+        description={data.description || ''}
       />
 
-      <Equipment />
+      <Suspense>
+        <Equipment />
+      </Suspense>
 
-      <ServicesPreview />
+      <Suspense>
+        <ServicesPreview />
+      </Suspense>
 
-      <Stats />
+      <Suspense>
+        <Stats />
+      </Suspense>
 
-      <BeforeAfter />
+      <Suspense>
+        <BeforeAfter />
+      </Suspense>
 
-      <Specialists />
+      <Suspense>
+        <Specialists />
+      </Suspense>
 
-      <CTA />
+      <Suspense>
+        <CTA />
+      </Suspense>
     </div>
   )
 }

@@ -36,12 +36,12 @@ const playfairDisplay = localFont({
   variable: '--font-secondary',
 })
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
       lang="ru"
       data-scroll-behavior="smooth"
-      className="scroll-smooth text-charcoal-800 antialiased selection:bg-gold"
+      className="text-charcoal-800 antialiased selection:bg-gold"
     >
       <body
         className={cn(

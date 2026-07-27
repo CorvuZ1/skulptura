@@ -4,20 +4,67 @@ import { Section } from '../ui/section'
 import { ServiceCard } from '../ui/service-card'
 import { SearchFilters } from '../ui/filters'
 import { BlockReveal } from '../ui/block-reveal'
+import { getCollection } from '@/api/collections'
 
-export const Services = () => {
+export interface IServicesProps {
+  searchParams: Record<string, string | string[] | undefined>
+}
+
+export const Services = async (props: IServicesProps) => {
+  const { searchParams } = props
+
+  const searchParam = (searchParams.search as string) || ''
+  const tagsParam = Array.isArray(searchParams.tags)
+    ? searchParams.tags
+    : searchParams.tags
+      ? [searchParams.tags]
+      : []
+
+  const data = await getCollection({
+    collection: 'services',
+    where: {
+      and: [
+        {
+          tags: {
+            contains: tagsParam,
+          },
+        },
+      ],
+      or: [
+        {
+          name: {
+            contains: searchParam,
+          },
+        },
+        {
+          description: {
+            contains: searchParam,
+          },
+        },
+        {
+          'values.key': {
+            contains: searchParam,
+          },
+        },
+      ],
+    },
+  })
+
+  const allTags = [...new Set(data.docs.flatMap((item) => item.tags || []))]
+
   return (
     <Section title={<h2>Ваша формула красоты</h2>}>
       <Container className="w-full">
-        <SearchFilters tags={['TestTag13', 'TestTag32', 'TestTag64']} className="mb-6" />
+        <SearchFilters tags={allTags} className="mb-6" />
         <BlockReveal from={{ x: -50 }} to={{ x: 0 }}>
           <div className="grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-6">
-            {publications.map((publication) => (
+            {data.docs.map((publication) => (
               <ServiceCard
+                id={publication.id}
                 key={publication.id}
                 description={publication.description}
-                services={publication.services}
-                title={publication.title}
+                values={publication.values}
+                name={publication.name}
               />
             ))}
           </div>

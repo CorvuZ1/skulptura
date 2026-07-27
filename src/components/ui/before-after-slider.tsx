@@ -8,6 +8,8 @@ import { Navigation } from 'swiper/modules'
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 import { BlockReveal } from './block-reveal'
+import { BeforeAfter } from '@/payload-types'
+import { getImage } from '@/lib/formatters'
 
 const DynamicReactCompareSlider = dynamic(
   () => import('react-compare-slider').then((module) => module.ReactCompareSlider),
@@ -15,11 +17,7 @@ const DynamicReactCompareSlider = dynamic(
 )
 
 export interface IBeforeAfterSliderProps {
-  items: {
-    id: string
-    before: string
-    after: string
-  }[]
+  items: Omit<BeforeAfter, 'updatedAt' | 'createdAt'>[]
   navigationSelector?: string
   className?: string
 }
@@ -39,31 +37,36 @@ export const BeforeAfterSlider = (props: IBeforeAfterSliderProps) => {
           nextEl: `.${navigationSelector} .swiper-button-next`,
         }}
       >
-        {items.map((item) => (
-          <SwiperSlide data-block-reveal key={item.id} className="swiper-no-swiping relative">
-            <DynamicReactCompareSlider
-              className="w-130 aspect-square mx-auto rounded-3xl"
-              itemOne={
-                <Image
-                  className="h-full w-full object-cover"
-                  alt=""
-                  width={900}
-                  height={900}
-                  src={item.before}
-                />
-              }
-              itemTwo={
-                <Image
-                  className="h-full w-full object-cover"
-                  alt=""
-                  width={900}
-                  height={900}
-                  src={item.after}
-                />
-              }
-            />
-          </SwiperSlide>
-        ))}
+        {items.map((item) => {
+          const beforeImage = getImage(item.before)
+          const afterImage = getImage(item.after)
+
+          return (
+            <SwiperSlide data-block-reveal key={item.id} className="swiper-no-swiping relative">
+              <DynamicReactCompareSlider
+                className="w-130 aspect-square mx-auto rounded-3xl"
+                itemOne={
+                  <Image
+                    className="h-full w-full object-cover"
+                    alt={beforeImage.alt}
+                    src={beforeImage.src}
+                    width={800}
+                    height={800}
+                  />
+                }
+                itemTwo={
+                  <Image
+                    className="h-full w-full object-cover"
+                    alt={afterImage.alt}
+                    src={afterImage.src}
+                    width={800}
+                    height={800}
+                  />
+                }
+              />
+            </SwiperSlide>
+          )
+        })}
       </Swiper>
     </BlockReveal>
   )

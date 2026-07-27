@@ -8,7 +8,10 @@ import { TextReveal } from '../ui/text-reveal'
 interface IHeroProps {
   title: ReactNode
   description?: string
-  image: string
+  image: {
+    src: string
+    alt?: string
+  }
   fullHeight?: boolean
   showArrow?: boolean
   className?: string
@@ -30,8 +33,8 @@ export const Hero = (props: IHeroProps) => {
           fetchPriority="high"
           loading="eager"
           fill
-          src={image}
-          alt=""
+          src={image.src}
+          alt={image.alt || ''}
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/50 via-transparent to-charcoal-900/50" />

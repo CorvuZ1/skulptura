@@ -4,18 +4,20 @@ import { ROUTES } from '@/lib/routes'
 import { Icon } from './icon'
 
 export interface ILogoProps {
-  isScrolled: boolean
-  isMobileOpen: boolean
+  isScrolled?: boolean
+  isMobileOpen?: boolean
+  className?: string
 }
 
-export const Logo = ({ isScrolled, isMobileOpen }: ILogoProps) => (
+export const Logo = ({ isScrolled, isMobileOpen, className }: ILogoProps) => (
   <Link
     href={ROUTES.home.href}
     className={cn(
-      'bg-white rounded-full flex items-center duration-500 p-2',
-      (isScrolled || isMobileOpen) && 'bg-gold-400 text-white',
+      'flex items-center duration-500 text-white',
+      (isScrolled || isMobileOpen) && 'text-black',
+      className,
     )}
   >
-    <Icon className="w-12 h-12" type="general" name="logo" />
+    <Icon className="w-full w-full" style={{ '--woman': 'gray' }} type="general" name="logo" />
   </Link>
 )

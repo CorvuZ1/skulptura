@@ -9,16 +9,19 @@ import Image from 'next/image'
 import { SliderNav } from '../ui/slider-nav'
 import { BeforeAfterSlider } from '../ui/before-after-slider'
 import { Section } from '../ui/section'
+import { getCollection } from '@/api/collections'
 
 export interface IBeforeAfterProps {
   name?: string
 }
 
-export const BeforeAfter = ({ name = 'before-after' }: IBeforeAfterProps) => {
+export const BeforeAfter = async ({ name = 'before-after' }: IBeforeAfterProps) => {
+  const data = await getCollection({ collection: 'before-after' })
+
   return (
     <Section title={<h2>До и После</h2>} right={<SliderNav className={name} />}>
       <Container className="w-full">
-        <BeforeAfterSlider items={beforeAfterData} navigationSelector={name} />
+        <BeforeAfterSlider items={data.docs} navigationSelector={name} />
       </Container>
     </Section>
   )

@@ -6,9 +6,6 @@ export const Equipment: CollectionConfig = {
     singular: 'Оборудование',
     plural: 'Оборудование',
   },
-  access: {
-    read: () => true,
-  },
   fields: [
     {
       name: 'name',

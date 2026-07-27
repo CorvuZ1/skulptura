@@ -16,6 +16,7 @@ export const SocialLink = (props: ISocialLinkProps) => {
 
   return (
     <a
+      target="_blank"
       href={href}
       className={cn(
         'flex h-6 w-6 items-center justify-center rounded-full text-charcoal-400 hover:text-gold-400 transition-colors',

@@ -9,7 +9,7 @@ export const Stats: CollectionConfig = {
   fields: [
     {
       name: 'value',
-      type: 'number',
+      type: 'text',
       label: 'Значение (Цифра)',
       required: true,
     },

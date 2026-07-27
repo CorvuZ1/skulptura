@@ -1,14 +1,16 @@
+import { getImage } from '@/lib/formatters'
 import { cn } from '@/lib/utils'
+import { Equipment } from '@/payload-types'
 import Image from 'next/image'
 
-interface EquipmentCardProps {
-  name: string
-  image: string
+export interface EquipmentCardProps extends Omit<Equipment, 'updatedAt' | 'createdAt'> {
   className?: string
 }
 
 export const EquipmentCard = (props: EquipmentCardProps) => {
   const { image, name, className } = props
+
+  const formattedImage = getImage(image)
 
   return (
     <div
@@ -17,8 +19,8 @@ export const EquipmentCard = (props: EquipmentCardProps) => {
     >
       <div className="aspect-4/3 overflow-hidden relative">
         <Image
-          src={image}
-          alt={name}
+          src={formattedImage.src}
+          alt={formattedImage.alt}
           width={800}
           height={800}
           className="h-full w-full object-cover transition-transform duration-700"

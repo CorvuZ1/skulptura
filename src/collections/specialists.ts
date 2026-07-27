@@ -8,9 +8,9 @@ export const Specialists: CollectionConfig = {
   },
   fields: [
     {
-      name: 'experience',
+      name: 'caption',
       type: 'text',
-      label: 'Опыт работы',
+      label: 'Подпись',
       required: true,
     },
     {
@@ -23,6 +23,13 @@ export const Specialists: CollectionConfig = {
       name: 'specialization',
       type: 'text',
       label: 'Специализация',
+      required: true,
+    },
+    {
+      name: 'image',
+      type: 'upload',
+      label: 'Изображение',
+      relationTo: 'media',
       required: true,
     },
     {

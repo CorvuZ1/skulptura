@@ -1,35 +1,12 @@
-'use client'
-
 import { cn } from '@/lib/utils'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 interface ITagsProps {
   items: string[]
+  toggleTag: (tag: string) => void
+  selectedTags: string[]
 }
 
-export const Tags = ({ items }: ITagsProps) => {
-  const router = useRouter()
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-
-  const selectedTags = searchParams.getAll('tags')
-
-  const toggleTag = (tag: string) => {
-    const params = new URLSearchParams(searchParams.toString())
-
-    const currentTags = params.getAll('tags')
-
-    const newTags = currentTags.includes(tag)
-      ? currentTags.filter((t) => t !== tag)
-      : [...currentTags, tag]
-
-    params.delete('tags')
-
-    newTags.forEach((t) => params.append('tags', t))
-
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false })
-  }
-
+export const Tags = ({ items, toggleTag, selectedTags }: ITagsProps) => {
   return (
     <div className="flex flex-wrap gap-2 items-start">
       {items.map((tag) => (

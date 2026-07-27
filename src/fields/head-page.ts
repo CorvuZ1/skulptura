@@ -1,20 +1,22 @@
-import { lexicalHTMLField } from '@payloadcms/richtext-lexical'
 import type { Field } from 'payload'
 
 export const headPage: Field[] = [
   {
-    name: 'headTitle',
+    name: 'title',
     type: 'text',
     label: 'Заголовок',
     required: true,
   },
   {
-    name: 'headDescription',
+    name: 'description',
     type: 'textarea',
     label: 'Описание',
   },
-  lexicalHTMLField({
-    lexicalFieldName: 'headDescription',
-    htmlFieldName: 'headDescriptionHtml',
-  }),
+  {
+    name: 'image',
+    type: 'upload',
+    label: 'Изображение',
+    relationTo: 'media',
+    required: true,
+  },
 ]

@@ -2,10 +2,16 @@ import { Media } from '@/payload-types'
 
 export const getImage = (image: string | Media) => {
   if (typeof image === 'string') {
-    return image
+    return {
+      src: image,
+      alt: '',
+    }
   }
 
-  return image.url!
+  return {
+    src: image.url || '',
+    alt: image.alt || '',
+  }
 }
 
 export const formatDate = (date: string) => {

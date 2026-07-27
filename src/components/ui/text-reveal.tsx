@@ -23,45 +23,47 @@ export const TextReveal = (props: IBlockRevealProps) => {
 
   const elementRef = useRef<HTMLElement>(null)
 
-  useGSAP(
-    () => {
-      if (!elementRef.current) return
+  // useGSAP(
+  //   () => {
+  //     if (!elementRef.current) return
 
-      const q = gsap.utils.selector(elementRef.current)
-      const text = q('[data-text-reveal]')
+  //     const q = gsap.utils.selector(elementRef.current)
+  //     const text = q('[data-text-reveal]')
 
-      const split = new SplitText(text, {
-        type: 'lines',
-        mask: withMask ? 'lines' : undefined,
-      })
+  //     const split = new SplitText(text, {
+  //       type: 'lines',
+  //       mask: withMask ? 'lines' : undefined,
+  //     })
 
-      gsap.set(text, { opacity: 1 })
+  //     gsap.set(text, { opacity: 1 })
 
-      gsap.fromTo(
-        split.lines,
-        {
-          opacity: 0,
-          ...from,
-        },
-        {
-          ease: 'sine.out',
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: split.lines,
-            start: 'top 80%',
-          },
-          ...to,
-        },
-      )
-    },
-    {
-      scope: elementRef,
-    },
-  )
+  //     gsap.fromTo(
+  //       split.lines,
+  //       {
+  //         opacity: 0,
+  //         ...from,
+  //       },
+  //       {
+  //         ease: 'sine.out',
+  //         opacity: 1,
+  //         duration: 0.8,
+  //         stagger: 0.2,
+  //         scrollTrigger: {
+  //           trigger: split.lines,
+  //           start: 'top 80%',
+  //         },
+  //         ...to,
+  //       },
+  //     )
+  //   },
+  //   {
+  //     scope: elementRef,
+  //   },
+  // )
 
-  return cloneElement(children, {
-    ref: elementRef,
-  })
+  // return cloneElement(children, {
+  //   ref: elementRef,
+  // })
+
+  return children
 }

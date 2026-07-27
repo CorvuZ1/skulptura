@@ -32,7 +32,7 @@ export const Header = () => {
     >
       <Container className="relative z-49">
         <div className="flex h-20 items-center justify-between">
-          <Logo isScrolled={isScrolled} isMobileOpen={isMobileOpen} />
+          <Logo isScrolled={isScrolled} isMobileOpen={isMobileOpen} className="w-35 h-18" />
 
           <DesktopNav isScrolled={isScrolled} pathname={pathname} />
           <BurgerButton
