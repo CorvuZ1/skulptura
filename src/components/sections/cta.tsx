@@ -4,19 +4,17 @@ import Image from 'next/image'
 import { Section } from '../ui/section'
 import { Container } from '../ui/container'
 import { getGlobal } from '@/api/globals'
+import { getImage } from '@/lib/formatters'
 
 export const CTA = async () => {
   const data = await getGlobal({ slug: 'cta' })
 
+  const image = getImage(data.image)
+
   return (
     <Section className="relative overflow-hidden">
       <Container className="w-full">
-        <Image
-          src="https://static.tildacdn.com/tild6637-3536-4366-b865-376135383739/3.png"
-          fill
-          alt=""
-          className="h-full w-full object-cover"
-        />
+        <Image src={image.src} fill alt={image.alt} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-charcoal-900/70" />
         <div className="relative">
           <div className="mx-auto max-w-2xl text-center">

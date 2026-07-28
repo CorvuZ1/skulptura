@@ -1,17 +1,18 @@
-import { publications } from '@/mock/publications'
 import { Container } from '../ui/container'
 import { Section } from '../ui/section'
 import { ServiceCard } from '../ui/service-card'
-import { SearchFilters } from '../ui/filters'
+import { SearchServices } from '../ui/search-services'
 import { BlockReveal } from '../ui/block-reveal'
 import { getCollection } from '@/api/collections'
+import { Warning } from '../ui/warning'
+import { Pagination } from '../ui/pagination'
 
 export interface IServicesProps {
-  searchParams: Record<string, string | string[] | undefined>
+  searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
 export const Services = async (props: IServicesProps) => {
-  const { searchParams } = props
+  const searchParams = await props.searchParams
 
   const searchParam = (searchParams.search as string) || ''
   const tagsParam = Array.isArray(searchParams.tags)
@@ -19,9 +20,12 @@ export const Services = async (props: IServicesProps) => {
     : searchParams.tags
       ? [searchParams.tags]
       : []
+  const pageParam = Number(searchParams.page) || 1
 
-  const data = await getCollection({
+  const servicesData = await getCollection({
     collection: 'services',
+    limit: 3,
+    page: pageParam,
     where: {
       and: [
         {
@@ -50,26 +54,53 @@ export const Services = async (props: IServicesProps) => {
     },
   })
 
-  const allTags = [...new Set(data.docs.flatMap((item) => item.tags || []))]
+  const tagsData = await getCollection({
+    collection: 'services',
+    limit: 0,
+    pagination: false,
+    select: {
+      tags: true,
+    },
+  })
+
+  const allTags = [...new Set(tagsData.docs.flatMap((item) => item.tags || []))]
 
   return (
     <Section title={<h2>Ваша формула красоты</h2>}>
-      <Container className="w-full">
-        <SearchFilters tags={allTags} className="mb-6" />
-        <BlockReveal from={{ x: -50 }} to={{ x: 0 }}>
-          <div className="grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-6">
-            {data.docs.map((publication) => (
-              <ServiceCard
-                id={publication.id}
-                key={publication.id}
-                description={publication.description}
-                values={publication.values}
-                name={publication.name}
+      <BlockReveal from={{ x: -50 }} to={{ x: 0 }}>
+        <Container className="w-full">
+          <SearchServices
+            tags={allTags}
+            pagination={{
+              page: servicesData.page || 1,
+              totalPages: servicesData.totalPages,
+              hasPrevPage: servicesData.hasPrevPage,
+              hasNextPage: servicesData.hasNextPage,
+              prevPage: servicesData.prevPage || null,
+              nextPage: servicesData.nextPage || null,
+            }}
+          >
+            {servicesData.docs.length > 0 ? (
+              <div className="grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-6">
+                {servicesData.docs.map((publication) => (
+                  <ServiceCard
+                    id={publication.id}
+                    key={publication.id}
+                    description={publication.description}
+                    values={publication.values}
+                    name={publication.name}
+                  />
+                ))}
+              </div>
+            ) : (
+              <Warning
+                title="Ничего не найдено"
+                description="Попробуйте изменить поисковый запрос или выбранные фильтры."
               />
-            ))}
-          </div>
-        </BlockReveal>
-      </Container>
+            )}
+          </SearchServices>
+        </Container>
+      </BlockReveal>
     </Section>
   )
 }

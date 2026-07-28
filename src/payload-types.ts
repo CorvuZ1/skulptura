@@ -548,6 +548,7 @@ export interface Cta {
   id: string;
   title: string;
   description: string;
+  image: string | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -631,6 +632,7 @@ export interface FooterSelect<T extends boolean = true> {
 export interface CtaSelect<T extends boolean = true> {
   title?: T;
   description?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

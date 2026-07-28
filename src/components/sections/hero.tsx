@@ -4,14 +4,13 @@ import { cn } from '@/lib/utils'
 import { ReactNode } from 'react'
 import Image from 'next/image'
 import { TextReveal } from '../ui/text-reveal'
+import { getImage } from '@/lib/formatters'
+import { Media } from '@/payload-types'
 
 interface IHeroProps {
   title: ReactNode
   description?: string
-  image: {
-    src: string
-    alt?: string
-  }
+  image: string | Media
   fullHeight?: boolean
   showArrow?: boolean
   className?: string
@@ -19,6 +18,8 @@ interface IHeroProps {
 
 export const Hero = (props: IHeroProps) => {
   const { image, title, className, description, fullHeight, showArrow } = props
+
+  const formattedImage = getImage(image)
 
   return (
     <section
@@ -33,8 +34,8 @@ export const Hero = (props: IHeroProps) => {
           fetchPriority="high"
           loading="eager"
           fill
-          src={image.src}
-          alt={image.alt || ''}
+          src={formattedImage.src}
+          alt={formattedImage.alt}
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal-900/50 via-transparent to-charcoal-900/50" />

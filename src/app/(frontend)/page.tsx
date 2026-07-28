@@ -37,7 +37,7 @@ export default async function Home() {
       <Hero
         fullHeight
         showArrow
-        image={getImage(data.image)}
+        image={data.image}
         title={
           <div className="animate-background-shimmer pb-2 bg-[linear-gradient(90deg,#d49a2e,#f4e3b8,#d49a2e)] bg-size-[500%_auto] bg-clip-text text-transparent">
             {data.title}

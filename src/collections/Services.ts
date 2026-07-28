@@ -53,6 +53,7 @@ export const Services: CollectionConfig = {
       type: 'text',
       label: 'Теги',
       hasMany: true,
+      defaultValue: [],
       required: true,
     },
   ],

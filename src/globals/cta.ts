@@ -19,5 +19,12 @@ export const CTA: GlobalConfig = {
       label: 'Описание',
       required: true,
     },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Изображение',
+      required: true,
+    },
   ],
 }

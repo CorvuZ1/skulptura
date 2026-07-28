@@ -21,7 +21,7 @@ export default async function ContactsPage() {
   return (
     <div>
       <Hero
-        image={getImage(data.image)}
+        image={data.image}
         title={<h1 className="pb-2">{data.title}</h1>}
         description={data.description || ''}
       />
