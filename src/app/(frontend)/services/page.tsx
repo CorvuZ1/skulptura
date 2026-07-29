@@ -4,35 +4,29 @@ import { Services } from '@/components/sections/services'
 import { Suspense } from 'react'
 import { getGlobal } from '@/api/globals'
 import { getImage } from '@/lib/formatters'
+import { Wait } from '@/components/ui/wait'
+import { getPageMetadata } from '@/lib/utils'
 
 export const generateMetadata = async () => {
   const data = await getGlobal({ slug: 'services-page' })
 
-  return {
-    title: data.seoTitle,
-    description: data.seoDescription,
-    keywords: data.seoKeywords,
-  }
+  return getPageMetadata('/services', data)
 }
 
-export default async function ServicesPage(props: PageProps<'/services'>) {
-  const data = await getGlobal({ slug: 'services-page' })
-
+export default function ServicesPage({ searchParams }: PageProps<'/services'>) {
   return (
-    <div>
-      <Hero
-        image={data.image}
-        title={<h1 className="pb-2">{data.title}</h1>}
-        description={data.description || ''}
-      />
+    <>
+      <Wait>
+        <Hero slug="services-page" />
+      </Wait>
 
-      <Suspense>
-        <Services searchParams={props.searchParams} />
-      </Suspense>
+      <Wait>
+        <Services searchParams={searchParams} />
+      </Wait>
 
-      <Suspense>
-        <CTA />
-      </Suspense>
-    </div>
+      <Wait>
+        <CTA className="mt-auto" />
+      </Wait>
+    </>
   )
 }

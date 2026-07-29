@@ -24,7 +24,7 @@ export const Services = async (props: IServicesProps) => {
 
   const servicesData = await getCollection({
     collection: 'services',
-    limit: 3,
+    limit: 9,
     page: pageParam,
     where: {
       and: [
@@ -67,7 +67,7 @@ export const Services = async (props: IServicesProps) => {
 
   return (
     <Section title={<h2>Ваша формула красоты</h2>}>
-      <BlockReveal from={{ x: -50 }} to={{ x: 0 }}>
+      <BlockReveal start="top 100%" from={{ x: -50 }} to={{ x: 0, stagger: 0.1 }}>
         <Container className="w-full">
           <SearchServices
             tags={allTags}

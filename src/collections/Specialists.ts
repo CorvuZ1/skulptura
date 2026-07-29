@@ -1,3 +1,4 @@
+import { revalidateTag } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
 export const Specialists: CollectionConfig = {
@@ -40,4 +41,11 @@ export const Specialists: CollectionConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('collection-specialists', 'max')
+      },
+    ],
+  },
 }

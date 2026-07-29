@@ -1,3 +1,4 @@
+import { revalidateTag } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
 export const BeforeAfter: CollectionConfig = {
@@ -22,4 +23,11 @@ export const BeforeAfter: CollectionConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('collection-before-after', 'max')
+      },
+    ],
+  },
 }

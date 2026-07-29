@@ -1,4 +1,3 @@
-import { specialists } from '@/mock/specialists'
 import { Container } from '../ui/container'
 import { SpecialistCard } from '../ui/specialist-card'
 import { Section } from '../ui/section'
@@ -11,7 +10,7 @@ export const Specialists = async () => {
   return (
     <Section title={<h2>Специалисты</h2>} className="gradient-cream-to-b">
       <Container className="w-full">
-        <BlockReveal isVerticalGroup from={{ scale: 0.85 }} to={{ scale: 1 }}>
+        <BlockReveal start="top center" from={{ scale: 0.85 }} to={{ scale: 1 }}>
           <div className="flex flex-col gap-16 md:gap-8">
             {data.docs.map((spec, id) => (
               <SpecialistCard

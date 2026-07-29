@@ -8,6 +8,7 @@ import { Search } from './search'
 import { Tags } from './tags'
 import { ROUTES } from '@/lib/routes'
 import { IPaginationProps, Pagination } from './pagination'
+import { Loader } from './loader'
 
 export interface ISearchServicesProps {
   tags: string[]
@@ -37,6 +38,7 @@ export const SearchServices = (props: ISearchServicesProps) => {
       startTransition(() => {
         router.replace(url, { scroll: false })
       })
+      scrollTo({ top: 0 })
     },
     [router],
   )
@@ -103,11 +105,10 @@ export const SearchServices = (props: ISearchServicesProps) => {
       </div>
 
       {isPending ? (
-        'LOADING'
+        <Loader />
       ) : (
         <div>
           {children}
-
           {pagination.totalPages > 1 && (
             <Pagination
               className="mt-10"

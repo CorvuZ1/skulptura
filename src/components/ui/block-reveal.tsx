@@ -8,7 +8,7 @@ import { useGSAP } from '@gsap/react'
 gsap.registerPlugin(ScrollTrigger)
 
 export interface IBlockRevealProps {
-  isVerticalGroup?: boolean
+  start?: string
   to?: gsap.TweenVars
   from?: gsap.TweenVars
   children: ReactElement<{
@@ -18,7 +18,7 @@ export interface IBlockRevealProps {
 }
 
 export const BlockReveal = (props: IBlockRevealProps) => {
-  const { children, isVerticalGroup, from, to } = props
+  const { children, from, to, start = 'top 85%' } = props
 
   const elementRef = useRef<HTMLElement>(null)
 
@@ -30,7 +30,7 @@ export const BlockReveal = (props: IBlockRevealProps) => {
       const blocks = q('[data-block-reveal]')
 
       ScrollTrigger.batch(blocks, {
-        start: isVerticalGroup ? 'top center' : 'top 85%',
+        start,
         once: true,
         onEnter: (batch) => {
           gsap.fromTo(

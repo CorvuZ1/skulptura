@@ -2,7 +2,6 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Container } from '@/components/ui/container'
-import { beforeAfterData } from '@/mock/before-after'
 import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
 import Image from 'next/image'

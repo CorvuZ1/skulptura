@@ -1,5 +1,6 @@
 import { headPage } from '@/fields/head-page'
 import { seoPage } from '@/fields/seo-page'
+import { revalidateTag } from 'next/cache'
 import { GlobalConfig } from 'payload'
 
 export const ContactsPage: GlobalConfig = {
@@ -26,4 +27,11 @@ export const ContactsPage: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('global-contacts-page', 'max')
+      },
+    ],
+  },
 }

@@ -1,4 +1,3 @@
-import { publications } from '@/mock/publications'
 import { Container } from '../ui/container'
 import { Button } from '../ui/button'
 import { ArrowRight } from 'lucide-react'

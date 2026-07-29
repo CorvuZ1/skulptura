@@ -1,3 +1,4 @@
+import { revalidateTag } from 'next/cache'
 import { GlobalConfig } from 'payload'
 
 export const CTA: GlobalConfig = {
@@ -27,4 +28,11 @@ export const CTA: GlobalConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('global-cta', 'max')
+      },
+    ],
+  },
 }

@@ -1,8 +1,10 @@
 import './styles.css'
 import localFont from 'next/font/local'
-import { cn } from '@/lib/utils'
+import { cn, getLayoutMetadata } from '@/lib/utils'
 import { Header } from '@/components/layouts/header'
 import { Footer } from '@/components/layouts/footer'
+import { Wait } from '@/components/ui/wait'
+import { Metadata } from 'next'
 
 const raleway = localFont({
   src: [
@@ -36,6 +38,8 @@ const playfairDisplay = localFont({
   variable: '--font-secondary',
 })
 
+export const generateMetadata = () => getLayoutMetadata()
+
 export default async function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html
@@ -51,8 +55,10 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
         )}
       >
         <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <main className="flex-1 flex flex-col">{children}</main>
+        <Wait>
+          <Footer />
+        </Wait>
       </body>
     </html>
   )

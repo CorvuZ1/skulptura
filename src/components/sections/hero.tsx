@@ -6,20 +6,30 @@ import Image from 'next/image'
 import { TextReveal } from '../ui/text-reveal'
 import { getImage } from '@/lib/formatters'
 import { Media } from '@/payload-types'
+import { getGlobal } from '@/api/globals'
 
 interface IHeroProps {
-  title: ReactNode
-  description?: string
-  image: string | Media
+  slug: 'home-page' | 'services-page' | 'contacts-page'
   fullHeight?: boolean
   showArrow?: boolean
   className?: string
 }
 
-export const Hero = (props: IHeroProps) => {
-  const { image, title, className, description, fullHeight, showArrow } = props
+export const Hero = async (props: IHeroProps) => {
+  const { className, fullHeight, showArrow, slug } = props
 
-  const formattedImage = getImage(image)
+  const data = await getGlobal({ slug })
+
+  const formattedImage = getImage(data.image)
+
+  const title =
+    slug === 'home-page' ? (
+      <div className="animate-background-shimmer pb-2 bg-[linear-gradient(90deg,#d49a2e,#f4e3b8,#d49a2e)] bg-size-[500%_auto] bg-clip-text text-transparent">
+        {data.title}
+      </div>
+    ) : (
+      <h1 className="pb-2">{data.title}</h1>
+    )
 
   return (
     <section
@@ -51,9 +61,9 @@ export const Hero = (props: IHeroProps) => {
             >
               {title}
             </div>
-            {description && (
+            {data.description && (
               <p className="text-lg max-w-140 leading-relaxed text-cream-100/80" data-text-reveal>
-                {description}
+                {data.description}
               </p>
             )}
           </div>

@@ -18,6 +18,11 @@ export const Logo = ({ isScrolled, isMobileOpen, className }: ILogoProps) => (
       className,
     )}
   >
-    <Icon className="w-full w-full" style={{ '--woman': 'gray' }} type="general" name="logo" />
+    <Icon
+      className="w-full w-full"
+      style={{ '--woman': 'gray' }}
+      type="general"
+      name="logo-with-text"
+    />
   </Link>
 )

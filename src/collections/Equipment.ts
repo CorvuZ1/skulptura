@@ -1,3 +1,4 @@
+import { revalidateTag } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
 export const Equipment: CollectionConfig = {
@@ -21,4 +22,11 @@ export const Equipment: CollectionConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('collection-equipment', 'max')
+      },
+    ],
+  },
 }

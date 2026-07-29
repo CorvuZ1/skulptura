@@ -4,31 +4,25 @@ import { Contacts } from '@/components/sections/contacts'
 import { getGlobal } from '@/api/globals'
 import { getImage } from '@/lib/formatters'
 import { Suspense } from 'react'
+import { Wait } from '@/components/ui/wait'
+import { getPageMetadata } from '@/lib/utils'
 
 export const generateMetadata = async () => {
   const data = await getGlobal({ slug: 'contacts-page' })
 
-  return {
-    title: data.seoTitle,
-    description: data.seoDescription,
-    keywords: data.seoKeywords,
-  }
+  return getPageMetadata('/contacts', data)
 }
 
-export default async function ContactsPage() {
-  const data = await getGlobal({ slug: 'contacts-page' })
-
+export default function ContactsPage() {
   return (
-    <div>
-      <Hero
-        image={data.image}
-        title={<h1 className="pb-2">{data.title}</h1>}
-        description={data.description || ''}
-      />
+    <>
+      <Wait>
+        <Hero slug="contacts-page" />
+      </Wait>
 
-      <Suspense>
+      <Wait>
         <Contacts />
-      </Suspense>
-    </div>
+      </Wait>
+    </>
   )
 }

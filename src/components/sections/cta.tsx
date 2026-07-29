@@ -5,14 +5,19 @@ import { Section } from '../ui/section'
 import { Container } from '../ui/container'
 import { getGlobal } from '@/api/globals'
 import { getImage } from '@/lib/formatters'
+import { cn } from '@/lib/utils'
 
-export const CTA = async () => {
+export interface ICTAProps {
+  className?: string
+}
+
+export const CTA = async ({ className }: ICTAProps) => {
   const data = await getGlobal({ slug: 'cta' })
 
   const image = getImage(data.image)
 
   return (
-    <Section className="relative overflow-hidden">
+    <Section className={cn('relative overflow-hidden', className)}>
       <Container className="w-full">
         <Image src={image.src} fill alt={image.alt} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-charcoal-900/70" />

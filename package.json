@@ -36,6 +36,7 @@
     "react": "19.2.6",
     "react-compare-slider": "^4.0.0",
     "react-dom": "19.2.6",
+    "react-error-boundary": "^6.1.2",
     "sharp": "^0.35.3",
     "swiper": "^14.0.5",
     "tailwind-merge": "^3.6.0",

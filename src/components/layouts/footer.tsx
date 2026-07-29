@@ -121,7 +121,7 @@ export const Footer = async () => {
           <a
             href="https://icher.pro"
             target="_blank"
-            className="animate-background-shimmer bg-[linear-gradient(90deg,#7953cd,#00affa,#0190cd,#764ada,#7953cd)] bg-size-[500%_auto] bg-clip-text text-transparent"
+            className="font-bold animate-background-shimmer bg-[linear-gradient(90deg,#7953cd,#00affa,#0190cd,#764ada,#7953cd)] bg-size-[500%_auto] bg-clip-text text-transparent"
           >
             Разработчик
           </a>

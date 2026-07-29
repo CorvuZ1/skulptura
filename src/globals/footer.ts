@@ -1,3 +1,4 @@
+import { revalidateTag } from 'next/cache'
 import { GlobalConfig } from 'payload'
 
 export const Footer: GlobalConfig = {
@@ -20,4 +21,11 @@ export const Footer: GlobalConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('global-footer', 'max')
+      },
+    ],
+  },
 }

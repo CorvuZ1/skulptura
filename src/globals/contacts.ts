@@ -1,3 +1,4 @@
+import { revalidateTag } from 'next/cache'
 import { GlobalConfig } from 'payload'
 
 export const Contacts: GlobalConfig = {
@@ -49,4 +50,11 @@ export const Contacts: GlobalConfig = {
       label: 'Max',
     },
   ],
+  hooks: {
+    afterChange: [
+      () => {
+        revalidateTag('global-contacts', 'max')
+      },
+    ],
+  },
 }

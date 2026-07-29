@@ -9,8 +9,7 @@ type FindArgs<TSlug extends CollectionSlug> = Parameters<Payload['find']>[0] & {
 
 export const getCollection = async <TSlug extends CollectionSlug>(params: FindArgs<TSlug>) => {
   'use cache'
-
-  cacheTag('collection', params.collection)
+  cacheTag(`collection-${params.collection}`)
 
   const payload = await getPayload({ config: configPromise })
 
