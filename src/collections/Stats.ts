@@ -27,5 +27,10 @@ export const Stats: CollectionConfig = {
         revalidateTag('collection-stats', 'max')
       },
     ],
+    afterDelete: [
+      () => {
+        revalidateTag('collection-stats', 'max')
+      },
+    ],
   },
 }

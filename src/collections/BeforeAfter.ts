@@ -29,5 +29,10 @@ export const BeforeAfter: CollectionConfig = {
         revalidateTag('collection-before-after', 'max')
       },
     ],
+    afterDelete: [
+      () => {
+        revalidateTag('collection-before-after', 'max')
+      },
+    ],
   },
 }

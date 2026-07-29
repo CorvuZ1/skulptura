@@ -28,5 +28,10 @@ export const Equipment: CollectionConfig = {
         revalidateTag('collection-equipment', 'max')
       },
     ],
+    afterDelete: [
+      () => {
+        revalidateTag('collection-equipment', 'max')
+      },
+    ],
   },
 }

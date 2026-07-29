@@ -47,5 +47,10 @@ export const Specialists: CollectionConfig = {
         revalidateTag('collection-specialists', 'max')
       },
     ],
+    afterDelete: [
+      () => {
+        revalidateTag('collection-specialists', 'max')
+      },
+    ],
   },
 }

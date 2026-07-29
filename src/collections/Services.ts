@@ -64,5 +64,10 @@ export const Services: CollectionConfig = {
         revalidateTag('collection-services', 'max')
       },
     ],
+    afterDelete: [
+      () => {
+        revalidateTag('collection-services', 'max')
+      },
+    ],
   },
 }
