@@ -15,7 +15,7 @@ export const Services: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
-      label: 'Название',
+      label: 'Заголовок',
       required: true,
     },
     {
@@ -26,11 +26,11 @@ export const Services: CollectionConfig = {
     {
       name: 'values',
       type: 'array',
-      label: 'Ключ / Значение',
       labels: {
-        singular: 'Ключ / Значение',
-        plural: 'Ключи / Значения',
+        singular: 'Название / Цена',
+        plural: 'Названия / Цены',
       },
+      required: true,
       fields: [
         {
           type: 'row',
@@ -38,17 +38,18 @@ export const Services: CollectionConfig = {
             {
               name: 'key',
               type: 'text',
-              label: 'Ключ',
+              label: 'Название',
+              required: true,
             },
             {
               name: 'value',
               type: 'text',
-              label: 'Значение',
+              label: 'Цена',
+              required: true,
             },
           ],
         },
       ],
-      required: true,
     },
     {
       name: 'tags',

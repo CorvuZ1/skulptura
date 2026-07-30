@@ -193,8 +193,8 @@ export interface Service {
   name: string;
   description?: string | null;
   values: {
-    key?: string | null;
-    value?: string | null;
+    key: string;
+    value: string;
     id?: string | null;
   }[];
   tags: string[];
