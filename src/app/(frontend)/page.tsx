@@ -15,7 +15,7 @@ import { Stats } from '@/components/sections/stats'
 import { Specialists } from '@/components/sections/specialists'
 import { getGlobal } from '@/api/globals'
 import { Wait } from '@/components/ui/wait'
-import { getPageMetadata } from '@/lib/utils'
+import { getPageMetadata } from '@/lib/metadata'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const data = await getGlobal({ slug: 'home-page' })

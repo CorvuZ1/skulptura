@@ -1,10 +1,11 @@
 import './styles.css'
 import localFont from 'next/font/local'
-import { cn, getLayoutMetadata } from '@/lib/utils'
 import { Header } from '@/components/layouts/header'
 import { Footer } from '@/components/layouts/footer'
 import { Wait } from '@/components/ui/wait'
 import { Metadata } from 'next'
+import { getLayoutMetadata } from '@/lib/metadata'
+import { cn } from '@/lib/utils'
 
 const raleway = localFont({
   src: [

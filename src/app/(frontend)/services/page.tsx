@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 import { getGlobal } from '@/api/globals'
 import { getImage } from '@/lib/formatters'
 import { Wait } from '@/components/ui/wait'
-import { getPageMetadata } from '@/lib/utils'
+import { getPageMetadata } from '@/lib/metadata'
 
 export const generateMetadata = async () => {
   const data = await getGlobal({ slug: 'services-page' })
