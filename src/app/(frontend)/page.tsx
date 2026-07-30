@@ -16,6 +16,8 @@ import { Specialists } from '@/components/sections/specialists'
 import { getGlobal } from '@/api/globals'
 import { Wait } from '@/components/ui/wait'
 import { getPageMetadata } from '@/lib/metadata'
+import { getBeautySalonSchema, getWebSiteSchema } from '@/lib/schema'
+import { JsonLd } from '@/components/ui/json-ld'
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const data = await getGlobal({ slug: 'home-page' })
@@ -23,9 +25,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return getPageMetadata('', data)
 }
 
-export default function Home() {
+export default async function Home() {
+  const contacts = await getGlobal({ slug: 'contacts' })
+
   return (
     <>
+      <JsonLd schema={getBeautySalonSchema(contacts)} />
+      <JsonLd schema={getWebSiteSchema()} />
+
       <h1 className="sr-only">Скульптура: студия эстетики лица и тела</h1>
 
       <Wait>
