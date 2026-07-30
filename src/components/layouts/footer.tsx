@@ -94,22 +94,38 @@ export const Footer = async () => {
             <ul className="flex gap-5">
               {instagram && (
                 <li>
-                  <SocialLink href={instagram} icon={<Icon type="social" name="instagram" />} />
+                  <SocialLink
+                    ariaLabel="Мы в Instagram"
+                    href={instagram}
+                    icon={<Icon type="social" name="instagram" />}
+                  />
                 </li>
               )}
               {whatsapp && (
                 <li>
-                  <SocialLink href={whatsapp} icon={<Icon type="social" name="whats-app" />} />
+                  <SocialLink
+                    ariaLabel="Мы в Whats-App"
+                    href={whatsapp}
+                    icon={<Icon type="social" name="whats-app" />}
+                  />
                 </li>
               )}
               {telegram && (
                 <li>
-                  <SocialLink href={telegram} icon={<Icon type="social" name="telegram" />} />
+                  <SocialLink
+                    ariaLabel="Мы в Telegram"
+                    href={telegram}
+                    icon={<Icon type="social" name="telegram" />}
+                  />
                 </li>
               )}
               {max && (
                 <li>
-                  <SocialLink href={max} icon={<Icon type="social" name="max" />} />
+                  <SocialLink
+                    ariaLabel="Мы в Max"
+                    href={max}
+                    icon={<Icon type="social" name="max" />}
+                  />
                 </li>
               )}
             </ul>

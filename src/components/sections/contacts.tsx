@@ -66,6 +66,7 @@ export const Contacts = async () => {
               {instagram && (
                 <li data-block-reveal>
                   <SocialLink
+                    ariaLabel="Мы в Instagram"
                     isBubble
                     href={instagram}
                     icon={<Icon type="social" name="instagram" />}
@@ -75,6 +76,7 @@ export const Contacts = async () => {
               {whatsapp && (
                 <li data-block-reveal>
                   <SocialLink
+                    ariaLabel="Мы в Whats-App"
                     isBubble
                     href={whatsapp}
                     icon={<Icon type="social" name="whats-app" />}
@@ -84,6 +86,7 @@ export const Contacts = async () => {
               {telegram && (
                 <li data-block-reveal>
                   <SocialLink
+                    ariaLabel="Мы в Telegram"
                     isBubble
                     href={telegram}
                     icon={<Icon type="social" name="telegram" />}
@@ -92,7 +95,12 @@ export const Contacts = async () => {
               )}
               {max && (
                 <li data-block-reveal>
-                  <SocialLink isBubble href={max} icon={<Icon type="social" name="max" />} />
+                  <SocialLink
+                    ariaLabel="Мы в Max"
+                    isBubble
+                    href={max}
+                    icon={<Icon type="social" name="max" />}
+                  />
                 </li>
               )}
             </ul>

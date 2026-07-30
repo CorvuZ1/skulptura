@@ -13,7 +13,7 @@ export const SpecialistCard = (props: ISpecialistCardProps) => {
   const formattedImage = getImage(image)
 
   return (
-    <div
+    <article
       data-block-reveal
       className="flex sm:flex-col items-center gap-10 md:gap-5 rounded-3xl sm:items-start"
     >
@@ -48,6 +48,6 @@ export const SpecialistCard = (props: ISpecialistCardProps) => {
           ))}
         </div>
       </div>
-    </div>
+    </article>
   )
 }

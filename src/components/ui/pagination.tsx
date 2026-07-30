@@ -59,6 +59,7 @@ export const Pagination = (props: IPaginationProps) => {
       <button
         onClick={() => hasPrevPage && onPageChange(prevPage!)}
         aria-disabled={!hasPrevPage}
+        aria-label="Предыдущая страница"
         className={cn(
           buttonClassName,
           hasPrevPage && 'pointer-events-auto cursor-pointer text-charcoal-800 hover:text-gold-600',
@@ -77,6 +78,7 @@ export const Pagination = (props: IPaginationProps) => {
           </span>
         ) : (
           <button
+            aria-label={`Перейти на страницу: ${item}`}
             key={item}
             onClick={() => onPageChange(item)}
             className={cn(
@@ -94,6 +96,7 @@ export const Pagination = (props: IPaginationProps) => {
       <button
         onClick={() => hasNextPage && onPageChange(nextPage!)}
         aria-disabled={!hasNextPage}
+        aria-label="Следующая страница"
         className={cn(
           buttonClassName,
           hasNextPage && 'pointer-events-auto text-charcoal-800 hover:text-gold-600',

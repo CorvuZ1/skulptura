@@ -11,6 +11,7 @@ export interface ILogoProps {
 
 export const Logo = ({ isScrolled, isMobileOpen, className }: ILogoProps) => (
   <Link
+    aria-label="Скульптура: студия эстетики лица и тела"
     href={ROUTES.home.href}
     className={cn(
       'flex items-center duration-500 text-white',
@@ -18,11 +19,6 @@ export const Logo = ({ isScrolled, isMobileOpen, className }: ILogoProps) => (
       className,
     )}
   >
-    <Icon
-      className="w-full w-full"
-      style={{ '--woman': 'gray' }}
-      type="general"
-      name="logo-with-text"
-    />
+    <Icon className="w-full" style={{ '--woman': 'gray' }} type="general" name="logo-with-text" />
   </Link>
 )
