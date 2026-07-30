@@ -1,3 +1,4 @@
+import { revalidationHooks } from '@/lib/revalidate'
 import { revalidateTag } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
@@ -23,15 +24,6 @@ export const Equipment: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [
-      () => {
-        revalidateTag('collection-equipment', 'max')
-      },
-    ],
-    afterDelete: [
-      () => {
-        revalidateTag('collection-equipment', 'max')
-      },
-    ],
+    ...revalidationHooks({ tag: 'collection-equipment', globalSlugs: ['home-page'] }),
   },
 }

@@ -1,3 +1,4 @@
+import { revalidationHooks } from '@/lib/revalidate'
 import { revalidateTag } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
@@ -42,15 +43,9 @@ export const Specialists: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [
-      () => {
-        revalidateTag('collection-specialists', 'max')
-      },
-    ],
-    afterDelete: [
-      () => {
-        revalidateTag('collection-specialists', 'max')
-      },
-    ],
+    ...revalidationHooks({
+      tag: 'collection-specialists',
+      globalSlugs: ['home-page'],
+    }),
   },
 }

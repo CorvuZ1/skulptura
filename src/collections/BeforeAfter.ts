@@ -1,3 +1,4 @@
+import { revalidationHooks } from '@/lib/revalidate'
 import { revalidateTag } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
@@ -24,15 +25,6 @@ export const BeforeAfter: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [
-      () => {
-        revalidateTag('collection-before-after', 'max')
-      },
-    ],
-    afterDelete: [
-      () => {
-        revalidateTag('collection-before-after', 'max')
-      },
-    ],
+    ...revalidationHooks({ tag: 'collection-before-after', globalSlugs: ['home-page'] }),
   },
 }

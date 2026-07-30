@@ -1,3 +1,4 @@
+import { revalidationHooks } from '@/lib/revalidate'
 import { revalidateTag } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
@@ -59,15 +60,9 @@ export const Services: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [
-      () => {
-        revalidateTag('collection-services', 'max')
-      },
-    ],
-    afterDelete: [
-      () => {
-        revalidateTag('collection-services', 'max')
-      },
-    ],
+    ...revalidationHooks({
+      tag: 'collection-services',
+      globalSlugs: ['services-page'],
+    }),
   },
 }
