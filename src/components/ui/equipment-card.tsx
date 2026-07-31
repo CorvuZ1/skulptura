@@ -1,7 +1,7 @@
+import Image from 'next/image'
 import { getImage } from '@/lib/formatters'
 import { cn } from '@/lib/utils'
 import { Equipment } from '@/payload-types'
-import Image from 'next/image'
 
 export interface EquipmentCardProps extends Omit<Equipment, 'updatedAt' | 'createdAt'> {
   className?: string

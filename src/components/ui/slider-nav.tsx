@@ -1,7 +1,5 @@
 'use client'
 
-import { SwiperClass, SwiperRef, useSwiper } from 'swiper/react'
-import { RefObject, useEffect, useState } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 

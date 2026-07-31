@@ -1,7 +1,7 @@
+import Image from 'next/image'
 import { getImage } from '@/lib/formatters'
 import { cn } from '@/lib/utils'
 import { Specialist } from '@/payload-types'
-import Image from 'next/image'
 
 export interface ISpecialistCardProps extends Omit<Specialist, 'createdAt' | 'updatedAt'> {
   isReversed?: boolean

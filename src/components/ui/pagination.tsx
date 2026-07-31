@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export interface IPaginationProps {
   page: number

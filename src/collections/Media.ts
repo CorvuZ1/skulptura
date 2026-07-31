@@ -16,6 +16,7 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
+    pasteURL: false,
     crop: true,
     formatOptions: {
       format: 'webp',

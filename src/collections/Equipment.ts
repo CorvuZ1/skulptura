@@ -1,6 +1,5 @@
-import { revalidationHooks } from '@/lib/revalidate'
-import { revalidateTag } from 'next/cache'
 import { CollectionConfig } from 'payload'
+import { revalidationHooks } from '@/lib/revalidate'
 
 export const Equipment: CollectionConfig = {
   slug: 'equipment',

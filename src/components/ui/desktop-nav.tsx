@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
 import { ROUTES_ARRAY } from '@/lib/routes'
+import { cn } from '@/lib/utils'
 
 export interface IDesktopNavProps {
   isScrolled: boolean

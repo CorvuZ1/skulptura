@@ -1,7 +1,7 @@
-import { getPayload } from 'payload'
-import configPromise from '@payload-config'
 import { cacheTag } from 'next/cache'
+import configPromise from '@payload-config'
 import type { GlobalSlug, Payload } from 'payload'
+import { getPayload } from 'payload'
 
 type FindArgs<TSlug extends GlobalSlug> = Parameters<Payload['findGlobal']>[0] & {
   slug: TSlug

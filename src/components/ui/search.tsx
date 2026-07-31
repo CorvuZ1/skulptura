@@ -1,8 +1,8 @@
 'use client'
 
-import { Search as SearchIcon } from 'lucide-react'
 import { ChangeEvent, RefObject } from 'react'
 import Form from 'next/form'
+import { Search as SearchIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export interface ISearchProps {

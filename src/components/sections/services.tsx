@@ -1,11 +1,10 @@
-import { Container } from '../ui/container'
-import { Section } from '../ui/section'
-import { ServiceCard } from '../ui/service-card'
-import { SearchServices } from '../ui/search-services'
-import { BlockReveal } from '../ui/block-reveal'
 import { getCollection } from '@/api/collections'
-import { Warning } from '../ui/warning'
-import { Pagination } from '../ui/pagination'
+import { BlockReveal } from '@/components/ui/block-reveal'
+import { Container } from '@/components/ui/container'
+import { SearchServices } from '@/components/ui/search-services'
+import { Section } from '@/components/ui/section'
+import { ServiceCard } from '@/components/ui/service-card'
+import { Warning } from '@/components/ui/warning'
 
 export interface IServicesProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>

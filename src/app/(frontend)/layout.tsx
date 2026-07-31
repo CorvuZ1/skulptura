@@ -1,9 +1,8 @@
-import './styles.css'
 import localFont from 'next/font/local'
-import { Header } from '@/components/layouts/header'
+import './styles.css'
 import { Footer } from '@/components/layouts/footer'
+import { Header } from '@/components/layouts/header'
 import { Wait } from '@/components/ui/wait'
-import { Metadata } from 'next'
 import { getLayoutMetadata } from '@/lib/metadata'
 import { cn } from '@/lib/utils'
 

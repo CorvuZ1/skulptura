@@ -1,12 +1,10 @@
-import { ArrowDown } from 'lucide-react'
-import { Container } from '@/components/ui/container'
-import { cn } from '@/lib/utils'
-import { ReactNode } from 'react'
 import Image from 'next/image'
-import { TextReveal } from '../ui/text-reveal'
-import { getImage } from '@/lib/formatters'
-import { Media } from '@/payload-types'
+import { ArrowDown } from 'lucide-react'
 import { getGlobal } from '@/api/globals'
+import { Container } from '@/components/ui/container'
+import { TextReveal } from '@/components/ui/text-reveal'
+import { getImage } from '@/lib/formatters'
+import { cn } from '@/lib/utils'
 
 interface IHeroProps {
   slug: 'home-page' | 'services-page' | 'contacts-page'

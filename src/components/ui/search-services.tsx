@@ -1,14 +1,14 @@
 'use client'
 
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { ReactNode, useCallback, useRef, useTransition } from 'react'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import debounce from 'lodash/debounce'
-import { Button } from './button'
-import { Search } from './search'
-import { Tags } from './tags'
+import { Button } from '@/components/ui/button'
+import { Loader } from '@/components/ui/loader'
+import { IPaginationProps, Pagination } from '@/components/ui/pagination'
+import { Search } from '@/components/ui/search'
+import { Tags } from '@/components/ui/tags'
 import { ROUTES } from '@/lib/routes'
-import { IPaginationProps, Pagination } from './pagination'
-import { Loader } from './loader'
 
 export interface ISearchServicesProps {
   tags: string[]

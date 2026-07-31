@@ -1,13 +1,12 @@
-import { Phone, MapPin, Mail, Clock } from 'lucide-react'
 import Link from 'next/link'
-import { Container } from '@/components/ui/container'
-import { SimpleContactItem } from '@/components/ui/simple-contact-item'
-import { Button } from '../ui/button'
-import { ROUTES } from '@/lib/routes'
-import { SocialLink } from '../ui/social-link'
-import { Icon } from '../ui/icon'
-import { Logo } from '../ui/logo'
+import { Clock,Mail, MapPin, Phone } from 'lucide-react'
 import { getGlobal } from '@/api/globals'
+import { Container } from '@/components/ui/container'
+import { Icon } from '@/components/ui/icon'
+import { Logo } from '@/components/ui/logo'
+import { SimpleContactItem } from '@/components/ui/simple-contact-item'
+import { SocialLink } from '@/components/ui/social-link'
+import { ROUTES } from '@/lib/routes'
 
 export const Footer = async () => {
   const [

@@ -1,7 +1,7 @@
-import { SliderNav } from '../ui/slider-nav'
-import { EquipmentSlider } from '../ui/equipment-slider'
-import { Section } from '../ui/section'
 import { getCollection } from '@/api/collections'
+import { EquipmentSlider } from '@/components/ui/equipment-slider'
+import { Section } from '@/components/ui/section'
+import { SliderNav } from '@/components/ui/slider-nav'
 
 export interface IEquipmentProps {
   name?: string

@@ -1,7 +1,7 @@
-import { cn } from '@/lib/utils'
 import { ReactNode } from 'react'
-import { Container } from './container'
-import { TextReveal } from './text-reveal'
+import { Container } from '@/components/ui/container'
+import { TextReveal } from '@/components/ui/text-reveal'
+import { cn } from '@/lib/utils'
 
 export interface ISectionProps {
   children: ReactNode

@@ -1,10 +1,10 @@
-import { Button } from '@/components/ui/button'
-import { ROUTES } from '@/lib/routes'
 import Image from 'next/image'
-import { Section } from '../ui/section'
-import { Container } from '../ui/container'
 import { getGlobal } from '@/api/globals'
+import { Button } from '@/components/ui/button'
+import { Container } from '@/components/ui/container'
+import { Section } from '@/components/ui/section'
 import { getImage } from '@/lib/formatters'
+import { ROUTES } from '@/lib/routes'
 import { cn } from '@/lib/utils'
 
 export interface ICTAProps {

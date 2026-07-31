@@ -7,7 +7,7 @@ export const ServiceCard = (props: IServiceCardProps) => {
 
   return (
     <article data-block-reveal className="rounded-3xl bg-white p-6 card-shadow sm:p-4">
-      <h3 className="font-secondary mb-1 text-2xl text-charcoal-800">{name}</h3>
+      <h3 className="font-secondary mb-1 text-2xl text-charcoal-800 truncate">{name}</h3>
       <p className="mb-3 text-sm text-charcoal-600">{description}</p>
       <div className="divide-y divide-charcoal-400/20">
         {values.map((item) => (

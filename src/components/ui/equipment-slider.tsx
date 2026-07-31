@@ -1,9 +1,9 @@
 'use client'
 
-import { EquipmentCard, EquipmentCardProps } from '@/components/ui/equipment-card'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper/modules'
-import { BlockReveal } from './block-reveal'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { BlockReveal } from '@/components/ui/block-reveal'
+import { EquipmentCard, EquipmentCardProps } from '@/components/ui/equipment-card'
 
 export interface IEquipmentSliderProps {
   items: EquipmentCardProps[]

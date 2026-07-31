@@ -1,12 +1,12 @@
 import { Clock, Mail, MapPin, Phone } from 'lucide-react'
-import { Container } from '../ui/container'
-import { Section } from '../ui/section'
-import { ContactItem } from '../ui/contact-tem'
-import { Map } from '../ui/map'
-import { Icon } from '../ui/icon'
-import { SocialLink } from '../ui/social-link'
-import { BlockReveal } from '../ui/block-reveal'
 import { getGlobal } from '@/api/globals'
+import { BlockReveal } from '@/components/ui/block-reveal'
+import { ContactItem } from '@/components/ui/contact-tem'
+import { Container } from '@/components/ui/container'
+import { Icon } from '@/components/ui/icon'
+import { Map } from '@/components/ui/map'
+import { Section } from '@/components/ui/section'
+import { SocialLink } from '@/components/ui/social-link'
 
 export const Contacts = async () => {
   const { address, phone, email, hours, instagram, whatsapp, telegram, max } = await getGlobal({

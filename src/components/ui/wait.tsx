@@ -2,9 +2,8 @@
 
 import { ReactNode, Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
+import { Loader } from '@/components/ui/loader'
 import { Warning } from '@/components/ui/warning'
-import { Icon } from './icon'
-import { Loader } from './loader'
 
 export interface IWaitProps {
   children: ReactNode

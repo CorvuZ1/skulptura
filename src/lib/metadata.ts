@@ -1,5 +1,5 @@
-import { getGlobal } from '@/api/globals'
 import { Metadata } from 'next'
+import { getGlobal } from '@/api/globals'
 
 export const getLayoutMetadata = (): Metadata => {
   return {

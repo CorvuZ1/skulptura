@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
+import { Icon } from '@/components/ui/icon'
 import { ROUTES } from '@/lib/routes'
-import { Icon } from './icon'
+import { cn } from '@/lib/utils'
 
 export interface ILogoProps {
   isScrolled?: boolean

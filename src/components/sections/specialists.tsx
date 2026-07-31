@@ -1,8 +1,8 @@
-import { Container } from '../ui/container'
-import { SpecialistCard } from '../ui/specialist-card'
-import { Section } from '../ui/section'
-import { BlockReveal } from '../ui/block-reveal'
 import { getCollection } from '@/api/collections'
+import { BlockReveal } from '@/components/ui/block-reveal'
+import { Container } from '@/components/ui/container'
+import { Section } from '@/components/ui/section'
+import { SpecialistCard } from '@/components/ui/specialist-card'
 
 export const Specialists = async () => {
   const data = await getCollection({ collection: 'specialists' })

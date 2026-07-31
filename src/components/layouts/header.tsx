@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { BurgerButton } from '@/components/ui/burger-button'
 import { Container } from '@/components/ui/container'
+import { DesktopNav } from '@/components/ui/desktop-nav'
+import { Logo } from '@/components/ui/logo'
+import { MobileNav } from '@/components/ui/mobile-nav'
 import { cn } from '@/lib/utils'
-import { BurgerButton } from '../ui/burger-button'
-import { Logo } from '../ui/logo'
-import { DesktopNav } from '../ui/desktop-nav'
-import { MobileNav } from '../ui/mobile-nav'
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)

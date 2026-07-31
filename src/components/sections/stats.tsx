@@ -1,7 +1,7 @@
 import { getCollection } from '@/api/collections'
-import { Container } from '../ui/container'
-import { NumberReveal } from '../ui/number-reveal'
-import { Section } from '../ui/section'
+import { Container } from '@/components/ui/container'
+import { NumberReveal } from '@/components/ui/number-reveal'
+import { Section } from '@/components/ui/section'
 
 export const Stats = async () => {
   const data = await getCollection({ collection: 'stats' })

@@ -1,7 +1,7 @@
-import { getPayload } from 'payload'
+import { cacheTag } from 'next/cache'
 import configPromise from '@payload-config'
 import type { CollectionSlug, Payload } from 'payload'
-import { cacheTag } from 'next/cache'
+import { getPayload } from 'payload'
 
 type FindArgs<TSlug extends CollectionSlug> = Parameters<Payload['find']>[0] & {
   collection: TSlug

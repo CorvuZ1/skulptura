@@ -1,11 +1,11 @@
-import { Container } from '../ui/container'
-import { Button } from '../ui/button'
 import { ArrowRight } from 'lucide-react'
-import { ServiceCard } from '../ui/service-card'
-import { Section } from '../ui/section'
-import { ROUTES } from '@/lib/routes'
-import { BlockReveal } from '../ui/block-reveal'
 import { getCollection } from '@/api/collections'
+import { BlockReveal } from '@/components/ui/block-reveal'
+import { Button } from '@/components/ui/button'
+import { Container } from '@/components/ui/container'
+import { Section } from '@/components/ui/section'
+import { ServiceCard } from '@/components/ui/service-card'
+import { ROUTES } from '@/lib/routes'
 
 export const ServicesPreview = async () => {
   const data = await getCollection({ collection: 'services', limit: 3 })

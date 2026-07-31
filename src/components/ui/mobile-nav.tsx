@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import { cn } from '@/lib/utils'
-import { ROUTES_ARRAY } from '@/lib/routes'
 import { Container } from '@/components/ui/container'
+import { ROUTES_ARRAY } from '@/lib/routes'
+import { cn } from '@/lib/utils'
 
 export interface IMobileNavProps {
   isMobileOpen: boolean

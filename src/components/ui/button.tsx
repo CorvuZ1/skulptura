@@ -1,8 +1,8 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import { type ButtonHTMLAttributes,ReactNode } from 'react'
 import Link, { LinkProps } from 'next/link'
-import { ReactNode, type ButtonHTMLAttributes } from 'react'
+import { cn } from '@/lib/utils'
 
 interface IBaseButtonProps {
   variant?: 'primary' | 'ghost' | 'outline'

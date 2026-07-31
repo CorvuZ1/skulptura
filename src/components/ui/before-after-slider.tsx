@@ -1,14 +1,12 @@
 'use client'
 
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Container } from '@/components/ui/container'
-import { Swiper, SwiperClass, SwiperRef, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
-import Image from 'next/image'
 import dynamic from 'next/dynamic'
-import { BlockReveal } from './block-reveal'
-import { BeforeAfter } from '@/payload-types'
+import Image from 'next/image'
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { BlockReveal } from '@/components/ui/block-reveal'
 import { getImage } from '@/lib/formatters'
+import { BeforeAfter } from '@/payload-types'
 
 const DynamicReactCompareSlider = dynamic(
   () => import('react-compare-slider').then((module) => module.ReactCompareSlider),

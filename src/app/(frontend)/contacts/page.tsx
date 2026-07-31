@@ -1,13 +1,10 @@
-import type { Metadata } from 'next'
-import { Hero } from '@/components/sections/hero'
-import { Contacts } from '@/components/sections/contacts'
 import { getGlobal } from '@/api/globals'
-import { getImage } from '@/lib/formatters'
-import { Suspense } from 'react'
+import { Contacts } from '@/components/sections/contacts'
+import { Hero } from '@/components/sections/hero'
+import { JsonLd } from '@/components/ui/json-ld'
 import { Wait } from '@/components/ui/wait'
 import { getPageMetadata } from '@/lib/metadata'
 import { getBeautySalonSchema, getBreadcrumbSchema } from '@/lib/schema'
-import { JsonLd } from '@/components/ui/json-ld'
 
 export const generateMetadata = async () => {
   const data = await getGlobal({ slug: 'contacts-page' })

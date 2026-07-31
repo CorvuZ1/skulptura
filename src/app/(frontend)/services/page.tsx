@@ -1,14 +1,12 @@
-import { Hero } from '@/components/sections/hero'
-import { CTA } from '@/components/sections/cta'
-import { Services } from '@/components/sections/services'
-import { Suspense } from 'react'
-import { getGlobal } from '@/api/globals'
 import { getCollection } from '@/api/collections'
-import { getImage } from '@/lib/formatters'
+import { getGlobal } from '@/api/globals'
+import { CTA } from '@/components/sections/cta'
+import { Hero } from '@/components/sections/hero'
+import { Services } from '@/components/sections/services'
+import { JsonLd } from '@/components/ui/json-ld'
 import { Wait } from '@/components/ui/wait'
 import { getPageMetadata } from '@/lib/metadata'
-import { getServicesCollectionSchema, getWebSiteSchema, getBreadcrumbSchema } from '@/lib/schema'
-import { JsonLd } from '@/components/ui/json-ld'
+import { getBreadcrumbSchema,getServicesCollectionSchema, getWebSiteSchema } from '@/lib/schema'
 
 export const generateMetadata = async () => {
   const data = await getGlobal({ slug: 'services-page' })

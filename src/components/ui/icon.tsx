@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils'
 import { SVGProps } from 'react'
+import { cn } from '@/lib/utils'
 
 export interface IIconProps extends SVGProps<SVGSVGElement> {
   name: string
@@ -7,7 +7,7 @@ export interface IIconProps extends SVGProps<SVGSVGElement> {
 }
 
 export const Icon = (props: IIconProps) => {
-  const { name, width, height, type, className, ...rest } = props
+  const { name, type, className, ...rest } = props
 
   return (
     <svg className={cn('h-full w-full', className)} {...rest}>
