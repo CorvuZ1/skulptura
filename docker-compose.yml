@@ -1,21 +1,23 @@
 services:
-  payload:
-    build: .
+  next:
+    container_name: next
+    build:
+      context: .
+    volumes:
+      - ./media:/app/media
     ports:
       - '3001:3001'
     depends_on:
       - mongo
 
   mongo:
+    container_name: mongo
     image: mongo:latest
+    restart: always
     ports:
       - '27017:27017'
-    command:
-      - --storageEngine=wiredTiger
     volumes:
       - data:/data/db
-    logging:
-      driver: none
 
 volumes:
   data:

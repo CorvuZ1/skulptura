@@ -12,7 +12,9 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation eslint .",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start -p 3001"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start -p 3001",
+    "build:compile": "next build --experimental-build-mode compile",
+    "build:generate": "next build --experimental-build-mode generate"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -37,7 +39,7 @@
     "react-compare-slider": "^4.0.0",
     "react-dom": "19.2.6",
     "react-error-boundary": "^6.1.2",
-    "sharp": "^0.35.3",
+    "sharp": "^0.32.6",
     "swiper": "^14.0.5",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.2",
