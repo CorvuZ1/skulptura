@@ -19,8 +19,12 @@ export const BurgerButton = (props: IBurgerButtonProps) => {
       aria-label="Меню"
     >
       <svg
+        xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
-        className={cn('cursor-pointer transition-transform duration-500', isOpen && 'rotate-45')}
+        className={cn(
+          'cursor-pointer transition-transform duration-500 w-full h-full',
+          isOpen && 'rotate-45',
+        )}
       >
         <path
           strokeLinecap="round"
